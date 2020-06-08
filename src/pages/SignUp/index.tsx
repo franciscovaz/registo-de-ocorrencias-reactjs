@@ -26,12 +26,7 @@ const SignUp: React.FC = () => {
           alt="Registo de Ocorrencias"
         />
 
-        <Form
-          initialData={{
-            email: 'frank@gmail.pt',
-          }}
-          onSubmit={handleSubmit}
-        >
+        <Form onSubmit={handleSubmit}>
           <h1>Faça o seu registo</h1>
 
           <Input name="name" icon={FiUser} type="name" placeholder="Name" />
