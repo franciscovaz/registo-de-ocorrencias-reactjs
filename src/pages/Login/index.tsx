@@ -54,7 +54,7 @@ const Login: React.FC = () => {
 
           <Button type="submit">Entrar</Button>
 
-          <a href="/forgot">Esqueci a minha senha</a>
+          <a href="/forgot">Recuperar palavra-passe</a>
         </Form>
 
         <a href="/signUp">
