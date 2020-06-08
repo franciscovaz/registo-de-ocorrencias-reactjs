@@ -6,9 +6,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
 }
 
-const Input: React.FC<InputProps> = () => (
+const Input: React.FC<InputProps> = props => (
   <Container>
-    <input type="text" />
+    <input {...props} />
   </Container>
 );
 export default Input;
