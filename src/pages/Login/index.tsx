@@ -5,6 +5,8 @@ import imgLogo from '../../assets/logo.svg';
 
 import { Container, Content, Background } from './styles';
 
+import Input from '../../components/Input';
+
 const Login: React.FC = () => (
   <Container>
     <Content>
@@ -18,8 +20,8 @@ const Login: React.FC = () => (
       <form>
         <h1>Faça o seu login</h1>
 
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <Input name="email" type="email" placeholder="Email" />
+        <Input name="password" type="password" placeholder="Password" />
 
         <button type="submit">Entrar</button>
 
