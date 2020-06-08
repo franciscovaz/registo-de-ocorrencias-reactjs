@@ -6,6 +6,7 @@ import imgLogo from '../../assets/logo.svg';
 import { Container, Content, Background } from './styles';
 
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const Login: React.FC = () => (
   <Container>
@@ -23,7 +24,7 @@ const Login: React.FC = () => (
         <Input name="email" type="email" placeholder="Email" />
         <Input name="password" type="password" placeholder="Password" />
 
-        <button type="submit">Entrar</button>
+        <Button type="submit">Entrar</Button>
 
         <a href="/forgot">Esqueci a minha senha</a>
       </form>
