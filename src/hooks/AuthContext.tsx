@@ -1,4 +1,4 @@
-import React, { createContext, useCallback } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 
 import { string } from 'yup';
 import api from '../services/api';
@@ -9,43 +9,53 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  name: string;
+  auth: object;
   signIn(credentials: SignInCredentials): Promise<void>;
 }
 
-interface userData {
-  id_utilizador: number;
-  password_utilizador: string;
-  nome_utilizador: string;
-}
-
-interface userToken {
+interface AuthState {
   token: string;
+  user: object;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
+  const [authData, setAuthData] = useState<AuthState>(() => {
+    const userToken = localStorage.getItem('@GoBarber:token');
+    const userInfo = localStorage.getItem('@GoBarber:user');
+
+    if (userToken && userInfo) {
+      return { token: userToken, user: JSON.parse(userInfo) };
+    }
+
+    return {} as AuthState;
+  });
+
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.get<userData[]>(`utilizador-login/${email}`, {
+    const response = await api.get(`utilizador-login/${email}`, {
       params: { email },
     });
 
-    const { id_utilizador } = response.data[0];
+    const user = response.data[0];
 
     //console.log(id_utilizador);
 
     // Buscar token
-    const tokenResponse = await api.get<userToken>(
-      `token/sign/${email}/${id_utilizador}`,
+    const tokenResponse = await api.get(
+      `token/sign/${email}/${user.id_utilizador}`,
     );
 
     const { token } = tokenResponse.data;
-    console.log(token);
+
+    localStorage.setItem('@GoBarber:token', token);
+    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+
+    setAuthData({ token, user });
   }, []);
 
   return (
-    <AuthContext.Provider value={{ name: 'Francisco', signIn }}>
+    <AuthContext.Provider value={{ auth: authData, signIn }}>
       {children}
     </AuthContext.Provider>
   );
