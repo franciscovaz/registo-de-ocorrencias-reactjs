@@ -1,6 +1,5 @@
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useState, useContext } from 'react';
 
-import { string } from 'yup';
 import api from '../services/api';
 
 interface SignInCredentials {
@@ -11,6 +10,7 @@ interface SignInCredentials {
 interface AuthContextData {
   auth: object;
   signIn(credentials: SignInCredentials): Promise<void>;
+  signOut(): void;
 }
 
 interface AuthState {
@@ -39,8 +39,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
     const user = response.data[0];
 
-    //console.log(id_utilizador);
-
     // Buscar token
     const tokenResponse = await api.get(
       `token/sign/${email}/${user.id_utilizador}`,
@@ -54,11 +52,29 @@ const AuthProvider: React.FC = ({ children }) => {
     setAuthData({ token, user });
   }, []);
 
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@GoBarber:token');
+    localStorage.removeItem('@GoBarber:user');
+
+    setAuthData({} as AuthState);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ auth: authData, signIn }}>
+    <AuthContext.Provider value={{ auth: authData, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export { AuthContext, AuthProvider };
+//hook
+function useAuth(): AuthContextData {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+
+  return context;
+}
+
+export { AuthProvider, useAuth };
