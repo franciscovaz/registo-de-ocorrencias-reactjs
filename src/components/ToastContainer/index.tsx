@@ -10,8 +10,8 @@ const ToastContainer: React.FC = () => {
         <FiAlertCircle size={20} />
 
         <div>
-          <strong>Titulo do toast</strong>
-          <p>Descrição do toast</p>
+          <strong>Aconteceu um erro</strong>
+          <p>Descrição do erro que pode ser maior</p>
         </div>
 
         <button type="button">
