@@ -4,16 +4,16 @@ import { Switch, Route } from 'react-router-dom';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 
-import { AuthProvider } from '../hooks/AuthContext';
+import AppProvider from '../hooks';
 
 const Routes: React.FC = () => (
   <>
-    <AuthProvider>
+    <AppProvider>
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/signup" component={SignUp} />
       </Switch>
-    </AuthProvider>
+    </AppProvider>
   </>
 );
 
