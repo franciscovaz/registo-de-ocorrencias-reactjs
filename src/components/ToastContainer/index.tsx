@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
-import { ToastMessage, useToast } from '../../hooks/toast';
+import { ToastMessage } from '../../hooks/toast';
 import Toast from './Toast';
 
 import { Container } from './styles';
@@ -10,8 +10,6 @@ interface ToastContaienerProps {
 }
 
 const ToastContainer: React.FC<ToastContaienerProps> = ({ messages }) => {
-  const { removeToast } = useToast();
-
   return (
     <Container>
       {messages.map(message => (
