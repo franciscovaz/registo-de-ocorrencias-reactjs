@@ -6,7 +6,7 @@ import { FormHandles } from '@unform/core';
 
 import imgLogo from '../../assets/logo.svg';
 
-import { Container, Content, Background } from './styles';
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -59,6 +59,7 @@ const Login: React.FC = () => {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
+          return;
         } else {
           addToast({
             type: 'error',
@@ -73,33 +74,40 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Content>
-        <img
-          src={imgLogo}
-          width="230"
-          height="134"
-          alt="Registo de Ocorrencias"
-        />
-
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Faça o seu login</h1>
-
-          <Input name="email" icon={FiMail} type="email" placeholder="Email" />
-          <Input
-            name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Password"
+        <AnimationContainer>
+          <img
+            src={imgLogo}
+            width="230"
+            height="134"
+            alt="Registo de Ocorrencias"
           />
 
-          <Button type="submit">Entrar</Button>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Faça o seu login</h1>
 
-          <a href="/forgot">Recuperar palavra-passe</a>
-        </Form>
+            <Input
+              name="email"
+              icon={FiMail}
+              type="email"
+              placeholder="Email"
+            />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Password"
+            />
 
-        <Link to="/signup">
-          <FiLogIn />
-          Criar conta
-        </Link>
+            <Button type="submit">Entrar</Button>
+
+            <a href="/forgot">Recuperar palavra-passe</a>
+          </Form>
+
+          <Link to="/signup">
+            <FiLogIn />
+            Criar conta
+          </Link>
+        </AnimationContainer>
       </Content>
       <Background />
     </Container>
