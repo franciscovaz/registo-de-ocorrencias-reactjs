@@ -49,16 +49,20 @@ const Login: React.FC = () => {
 
         // Adicionar Toast
         addToast({
-          type: 'error',
-          title: 'Toast registado com successo',
-          description:
-            'Descrição do toast que foi criado com sucesso e foi afirmativo',
+          type: 'success',
+          title: 'Login efetuado com sucesso',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
         }
+
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
+        });
       }
     },
     [signIn],
