@@ -13,7 +13,6 @@ const App: React.FC = () => (
       <Routes />
     </BrowserRouter>
 
-    <ToastContainer />
     <GlobalStyle />
   </>
 );

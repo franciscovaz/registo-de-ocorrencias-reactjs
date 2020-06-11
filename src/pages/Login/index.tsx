@@ -48,7 +48,12 @@ const Login: React.FC = () => {
         // TODO verificar se a resposta vem vazia... lançar erro (dentro do hook)
 
         // Adicionar Toast
-        addToast();
+        addToast({
+          type: 'error',
+          title: 'Toast registado com successo',
+          description:
+            'Descrição do toast que foi criado com sucesso e foi afirmativo',
+        });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
