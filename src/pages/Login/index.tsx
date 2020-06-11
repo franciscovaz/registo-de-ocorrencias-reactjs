@@ -14,6 +14,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
+import { Link, useHistory } from 'react-router-dom';
 
 interface SignInFormData {
   email: string;
@@ -25,6 +26,8 @@ const Login: React.FC = () => {
 
   const { signIn } = useAuth();
   const { addToast } = useToast();
+
+  const history = useHistory();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -50,6 +53,8 @@ const Login: React.FC = () => {
           type: 'success',
           title: 'Login efetuado com sucesso',
         });
+
+        history.push('/create-occurrence');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -91,10 +96,10 @@ const Login: React.FC = () => {
           <a href="/forgot">Recuperar palavra-passe</a>
         </Form>
 
-        <a href="/signUp">
+        <Link to="/signup">
           <FiLogIn />
           Criar conta
-        </a>
+        </Link>
       </Content>
       <Background />
     </Container>
