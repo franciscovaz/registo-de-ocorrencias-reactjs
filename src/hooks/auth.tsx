@@ -68,10 +68,12 @@ const AuthProvider: React.FC = ({ children }) => {
     const { token } = tokenResponse.data;
     //console.log('token: ', token);
 
-    localStorage.setItem('@GoBarber:token', token);
-    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+    if (token && user) {
+      localStorage.setItem('@GoBarber:token', token);
+      localStorage.setItem('@GoBarber:user', JSON.stringify(user));
 
-    setAuthData({ token, user });
+      setAuthData({ token, user });
+    }
   }, []);
 
   const signOut = useCallback(() => {
@@ -82,7 +84,7 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ auth: authData, signIn, signOut }}>
+    <AuthContext.Provider value={{ auth: authData.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
