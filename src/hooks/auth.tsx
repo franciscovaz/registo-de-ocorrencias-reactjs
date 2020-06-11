@@ -38,6 +38,11 @@ const AuthProvider: React.FC = ({ children }) => {
     });
 
     const user = response.data[0];
+    console.log('user: ', user);
+
+    if (!user) {
+      throw new Error('User não existe');
+    }
 
     // Buscar token
     const tokenResponse = await api.get(
@@ -45,6 +50,7 @@ const AuthProvider: React.FC = ({ children }) => {
     );
 
     const { token } = tokenResponse.data;
+    console.log('token: ', token);
 
     localStorage.setItem('@GoBarber:token', token);
     localStorage.setItem('@GoBarber:user', JSON.stringify(user));
