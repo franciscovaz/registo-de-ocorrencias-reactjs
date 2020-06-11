@@ -69,7 +69,7 @@ const Login: React.FC = () => {
         }
       }
     },
-    [signIn],
+    [signIn, history, addToast],
   );
   return (
     <Container>
