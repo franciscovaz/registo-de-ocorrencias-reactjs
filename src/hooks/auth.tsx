@@ -38,10 +38,26 @@ const AuthProvider: React.FC = ({ children }) => {
     });
 
     const user = response.data[0];
-    console.log('user: ', user);
+    //console.log('user: ', user);
 
     if (!user) {
-      throw new Error('User não existe');
+      throw new Error('O email que inseriu não está registado.');
+    }
+
+    const passwordHashed = user.password_utilizador;
+    // console.log('password: ', passwordHashed);
+
+    // Check if email and password correspond
+
+    const emailPasswordMatch = await api.post(
+      `utilizador-check/${email}/${password}`,
+      {
+        hash: passwordHashed,
+      },
+    );
+
+    if (emailPasswordMatch.data === false) {
+      throw new Error('O email e a password não correspondem.');
     }
 
     // Buscar token
@@ -50,7 +66,7 @@ const AuthProvider: React.FC = ({ children }) => {
     );
 
     const { token } = tokenResponse.data;
-    console.log('token: ', token);
+    //console.log('token: ', token);
 
     localStorage.setItem('@GoBarber:token', token);
     localStorage.setItem('@GoBarber:user', JSON.stringify(user));

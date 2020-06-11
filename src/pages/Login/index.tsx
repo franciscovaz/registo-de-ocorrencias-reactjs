@@ -45,8 +45,6 @@ const Login: React.FC = () => {
           password: data.password,
         });
 
-        // TODO verificar se a resposta vem vazia... lançar erro (dentro do hook)
-
         // Adicionar Toast
         addToast({
           type: 'success',
@@ -56,13 +54,13 @@ const Login: React.FC = () => {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
+        } else {
+          addToast({
+            type: 'error',
+            title: 'Erro na autenticação',
+            description: err.message,
+          });
         }
-
-        addToast({
-          type: 'error',
-          title: 'Erro na autenticação',
-          description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
-        });
       }
     },
     [signIn],
