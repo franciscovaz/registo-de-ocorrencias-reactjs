@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img width="182" alt="Registo de Ocorrências" src="https://user-images.githubusercontent.com/27808014/84531787-029fd300-acdd-11ea-9eef-9fc1c1dbf7b9.png">
+  <img width="182" alt="Registo de Ocorrências" src="https://user-images.githubusercontent.com/27808014/84532925-0f252b00-acdf-11ea-8afb-47678e5a17a6.png">
 </h1>
 
 <h3 align="center">
@@ -24,9 +24,8 @@ For example, if you go on the street and see an hole, you can take a foto, descr
 I already made an application with the same purpose in Angular, however and wanting to learn ReactJS, I decided to do the application again 🚀
 
 <br />
-<!-- ## 📸 Demo
 
-![GoBarber GIF](imgs/gobarber.gif) -->
+<!--![GoBarber GIF](imgs/gobarber.gif) -->
 
 <br />
 
