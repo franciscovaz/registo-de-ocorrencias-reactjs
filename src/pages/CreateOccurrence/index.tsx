@@ -10,6 +10,14 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 import Dropzone from '../../components/Dropzone';
 import { LeafletMouseEvent } from 'leaflet';
 
+interface OccurrenceRegisterData {
+  title: string;
+  description: string;
+  latitude: number;
+  longitude: number;
+  photo: File;
+}
+
 const CreateOccurence: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
@@ -34,8 +42,8 @@ const CreateOccurence: React.FC = () => {
     setSelectedPosition([e.latlng.lat, e.latlng.lng]);
   }
 
-  async function handleSubmitForm(e: FormEvent) {
-    console.log('Submit!');
+  async function handleSubmitForm(data: object) {
+    console.log('Submit: ', data);
   }
 
   return (
