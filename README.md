@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="#%EF%B8%8F-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <!-- <a href="#-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
   <a href="#-preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;
@@ -16,9 +16,17 @@
 
 </br>
 
-## 📸 Demo
+## 💇🏻‍♂️ About the project
 
-<!-- ![GoBarber GIF](imgs/gobarber.gif) -->
+This is the web repository to an app for registry occurrences in some city, village, or other.
+For example, if you go on the street and see an hole, you can take a foto, describe the situation and send it to the competent authorities. They will address the issue and you will receive an email.
+
+I already made an application with the same purpose in Angular, however and wanting to learn ReactJS, I decided to do the application again 🚀
+
+<br />
+<!-- ## 📸 Demo
+
+![GoBarber GIF](imgs/gobarber.gif) -->
 
 <br />
 
@@ -33,13 +41,6 @@
 <h1 align="center">
   <img height="500" alt="Registo de Ocorrência" src="https://user-images.githubusercontent.com/27808014/84532433-231c5d00-acde-11ea-8d24-ce2fb055882e.png">
 </h1>
-
-## 💇🏻‍♂️ About the project
-
-This is the web repository to an app for registry occurrences in some city, village, or other.
-For example, if you go on the street and see an hole, you can take a foto, describe the situation and send it to the competent authorities. They will address the issue and you will receive an email.
-
-I already made an application with the same purpose in Angular, however and wanting to learn ReactJS, I decided to do the application again 🚀
 
 ---
 
