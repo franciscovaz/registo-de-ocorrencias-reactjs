@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { Form } from '@unform/web';
 
 import { FormContainer, Field } from './styles';
@@ -7,7 +7,10 @@ import Header from '../../components/Header';
 
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
+import Dropzone from '../../components/Dropzone';
+
 const CreateOccurence: React.FC = () => {
+  const [selectedFile, setSelectedFile] = useState<File>();
   async function handleSubmitForm(e: FormEvent) {
     e.preventDefault();
     console.log('Submit!');
@@ -25,6 +28,7 @@ const CreateOccurence: React.FC = () => {
           <fieldset>
             <legend>
               <h2>Dados</h2>
+              <span>Preencha os dados da ocorrência</span>
             </legend>
 
             <Field>
@@ -52,6 +56,15 @@ const CreateOccurence: React.FC = () => {
 
               <Marker position={[40.6009948, -8.6930693]} />
             </Map>
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              <h2>Fotografia</h2>
+              <span>Selecione uma fotografia da ocorrência</span>
+            </legend>
+
+            <Dropzone onFileUploaded={setSelectedFile} />
           </fieldset>
 
           <button type="submit">Registar ocorrência</button>

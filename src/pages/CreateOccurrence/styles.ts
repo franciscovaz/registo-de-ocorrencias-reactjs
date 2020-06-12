@@ -106,8 +106,9 @@ export const Field = styled.div`
       color: #a0a0b2;
     }
 
-  label {
-    font-size: 14px;
-    margin-bottom: 8px;
+    label {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
   }
 `;
