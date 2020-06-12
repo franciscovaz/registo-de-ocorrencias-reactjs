@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useEffect } from 'react';
 import { Form } from '@unform/web';
 
 import { FormContainer, Field } from './styles';
@@ -8,9 +8,32 @@ import Header from '../../components/Header';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import Dropzone from '../../components/Dropzone';
+import { LeafletMouseEvent } from 'leaflet';
 
 const CreateOccurence: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([
+    0,
+    0,
+  ]);
+  const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
+    0,
+    0,
+  ]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(location => {
+      const { latitude, longitude } = location.coords;
+
+      setInitialPosition([latitude, longitude]);
+      setSelectedPosition([latitude, longitude]);
+    });
+  }, []);
+
+  function handleMapClick(e: LeafletMouseEvent) {
+    setSelectedPosition([e.latlng.lat, e.latlng.lng]);
+  }
+
   async function handleSubmitForm(e: FormEvent) {
     e.preventDefault();
     console.log('Submit!');
@@ -48,13 +71,13 @@ const CreateOccurence: React.FC = () => {
               <span>Selecione o endereço no mapa</span>
             </legend>
 
-            <Map center={[40.6009948, -8.6930693]} zoom={15}>
+            <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
               <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
-              <Marker position={[40.6009948, -8.6930693]} />
+              <Marker position={selectedPosition} />
             </Map>
           </fieldset>
 
