@@ -93,6 +93,19 @@ export const Field = styled.div`
     }
   }
 
+  textarea {
+    flex: 1;
+    background: #f0f0f5;
+    border-radius: 8px;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    color: #6c6c80;
+
+    &::placeholder {
+      color: #a0a0b2;
+    }
+
   label {
     font-size: 14px;
     margin-bottom: 8px;

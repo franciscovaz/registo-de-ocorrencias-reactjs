@@ -23,7 +23,9 @@ const CreateOccurence: React.FC = () => {
           </h1>
 
           <fieldset>
-            <legend>Dados</legend>
+            <legend>
+              <h2>Dados</h2>
+            </legend>
 
             <Field>
               <label htmlFor="title">Título</label>
@@ -32,7 +34,7 @@ const CreateOccurence: React.FC = () => {
 
             <Field>
               <label htmlFor="description">Descrição</label>
-              <input type="text" name="description" id="description" />
+              <textarea rows={10} name="description" id="description" />
             </Field>
           </fieldset>
 
