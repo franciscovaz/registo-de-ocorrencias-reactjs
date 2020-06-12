@@ -27,30 +27,33 @@ const SignUp: React.FC = () => {
 
   const history = useHistory();
 
-  const handleSubmit = useCallback(async (data: UserInfoToAdd) => {
-    formRef.current?.setErrors({});
-    try {
-      const schema = Yup.object().shape({
-        nome_utilizador: Yup.string().required('Nome obrigatório'),
-        email_utilizador: Yup.string()
-          .required('Email obrigatório')
-          .email('Digite um email válido'),
-        password_utilizador: Yup.string().min(6, 'Mínimo de 6 caracteres'),
-      });
+  const handleSubmit = useCallback(
+    async (data: UserInfoToAdd) => {
+      formRef.current?.setErrors({});
+      try {
+        const schema = Yup.object().shape({
+          nome_utilizador: Yup.string().required('Nome obrigatório'),
+          email_utilizador: Yup.string()
+            .required('Email obrigatório')
+            .email('Digite um email válido'),
+          password_utilizador: Yup.string().min(6, 'Mínimo de 6 caracteres'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      data.fk_tipo_utilizador = 4;
+        data.fk_tipo_utilizador = 4;
 
-      await api.post('utilizador', data);
+        await api.post('utilizador', data);
 
-      history.push('/');
-    } catch (err) {
-      formRef.current?.setErrors(getValidationErrors(err));
-    }
-  }, []);
+        history.push('/');
+      } catch (err) {
+        formRef.current?.setErrors(getValidationErrors(err));
+      }
+    },
+    [history],
+  );
 
   return (
     <Container>
