@@ -23,6 +23,8 @@ For example, if you go on the street and see an hole, you can take a foto, descr
 
 I already made an application with the same purpose in Angular, however and wanting to learn ReactJS, I decided to do the application again 🚀
 
+This project is still in development!
+
 <br />
 
 <!--![GoBarber GIF](imgs/gobarber.gif) -->
