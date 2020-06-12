@@ -16,7 +16,7 @@ export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-    leaflet-container {
+    .leaflet-container {
       width: 100%;
       height: 350px;
       border-radius: 8px;

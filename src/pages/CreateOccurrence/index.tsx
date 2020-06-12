@@ -42,12 +42,14 @@ const CreateOccurence: React.FC = () => {
               <span>Selecione o endereço no mapa</span>
             </legend>
 
-            {/* <Map center={[40.6009948, -8.6930693]} zoom={15}>
+            <Map center={[40.6009948, -8.6930693]} zoom={15}>
               <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-            </Map> */}
+
+              <Marker position={[40.6009948, -8.6930693]} />
+            </Map>
           </fieldset>
 
           <button type="submit">Registar ocorrência</button>
