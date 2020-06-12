@@ -35,7 +35,6 @@ const CreateOccurence: React.FC = () => {
   }
 
   async function handleSubmitForm(e: FormEvent) {
-    e.preventDefault();
     console.log('Submit!');
   }
 

@@ -1,44 +1,88 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <img width="182" alt="Registo de Ocorrências" src="https://user-images.githubusercontent.com/27808014/84531787-029fd300-acdd-11ea-9eef-9fc1c1dbf7b9.png">
+</h1>
 
-## Available Scripts
+<h3 align="center">
+   🏗 Registo de Ocorrências | ReactJS + Node
+</h3>
 
-In the project directory, you can run:
+<p align="center">
+  <a href="#%EF%B8%8F-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;
+</p>
 
-### `yarn start`
+</br>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📸 Demo
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<!-- ![GoBarber GIF](imgs/gobarber.gif) -->
 
-### `yarn test`
+<br />
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📸 Preview
 
-### `yarn build`
+<h1 align="center">
+  <img height="500" alt="Login" src="https://user-images.githubusercontent.com/27808014/84532302-e9e3ed00-acdd-11ea-9012-7be40357f813.png">
+</h1>
+<h1 align="center">
+  <img height="500" alt="Registo de Utilizador" src="https://user-images.githubusercontent.com/27808014/84532357-0718bb80-acde-11ea-8423-fb634567ce41.png">
+</h1>
+<h1 align="center">
+  <img height="500" alt="Registo de Ocorrência" src="https://user-images.githubusercontent.com/27808014/84532433-231c5d00-acde-11ea-8d24-ce2fb055882e.png">
+</h1>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💇🏻‍♂️ About the project
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+This is the web repository to an app for registry occurrences in some city, village, or other.
+For example, if you go on the street and see an hole, you can take a foto, describe the situation and send it to the competent authorities. They will address the issue and you will receive an email.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I already made an application with the same purpose in Angular, however and wanting to learn ReactJS, I decided to do the application again 🚀
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ⚙ Technologies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Front end**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - ReactJS
+  - Typescript
+  - react-router-dom
+  - axios
+  - leaflet
+  - react-leaflet
+  - JWT
+  - API Context
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## 💻 Getting started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Clone the repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  # Clone repository
+  git clone https://github.com/franciscovaz/registo-de-ocorrencias-reactjs.git
+```
+
+> Run web project
+
+```bash
+  # Access web project
+  cd registo-de-ocorrencias-reactjs
+
+  # Run web project
+  yarn start
+```
+
+---
+
+> Run server
+
+```bash
+  # Check my other repository (Don´t forget to run all migrations)
+  https://github.com/franciscovaz/occurrence-log
+
+```
