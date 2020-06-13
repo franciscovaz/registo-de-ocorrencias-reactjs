@@ -1,4 +1,10 @@
-import React, { FormEvent, useState, useEffect } from 'react';
+import React, {
+  FormEvent,
+  useState,
+  useEffect,
+  useRef,
+  ChangeEvent,
+} from 'react';
 import { Form } from '@unform/web';
 
 import { FormContainer, Field } from './styles';
@@ -29,6 +35,9 @@ const CreateOccurence: React.FC = () => {
     0,
   ]);
 
+  const [inputTitle, setInputTitle] = useState('');
+  const [textareaDescription, setTextareaDescription] = useState('');
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(location => {
       const { latitude, longitude } = location.coords;
@@ -42,15 +51,25 @@ const CreateOccurence: React.FC = () => {
     setSelectedPosition([e.latlng.lat, e.latlng.lng]);
   }
 
-  async function handleSubmitForm(data: object) {
-    console.log('Submit: ', data);
+  function handleTitleChange(e: ChangeEvent<HTMLInputElement>) {
+    setInputTitle(e.target.value);
+  }
+
+  function handleTextareaChange(e: ChangeEvent<HTMLTextAreaElement>) {
+    setTextareaDescription(e.target.value);
+  }
+
+  async function handleSubmitForm(e: FormEvent) {
+    e.preventDefault();
+    console.log('Input: ', inputTitle);
+    console.log('Textarea: ', textareaDescription);
   }
 
   return (
     <>
       <Header />
       <FormContainer>
-        <Form onSubmit={handleSubmitForm}>
+        <form onSubmit={handleSubmitForm}>
           <h1>
             Registe uma <br /> Ocorrência
           </h1>
@@ -63,12 +82,22 @@ const CreateOccurence: React.FC = () => {
 
             <Field>
               <label htmlFor="title">Título</label>
-              <input type="text" name="title" id="title" />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                onChange={handleTitleChange}
+              />
             </Field>
 
             <Field>
               <label htmlFor="description">Descrição</label>
-              <textarea rows={10} name="description" id="description" />
+              <textarea
+                rows={10}
+                name="description"
+                id="description"
+                onChange={handleTextareaChange}
+              />
             </Field>
           </fieldset>
 
@@ -98,7 +127,7 @@ const CreateOccurence: React.FC = () => {
           </fieldset>
 
           <button type="submit">Registar ocorrência</button>
-        </Form>
+        </form>
       </FormContainer>
     </>
   );
