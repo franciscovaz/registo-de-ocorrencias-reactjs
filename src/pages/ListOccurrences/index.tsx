@@ -1,12 +1,16 @@
 import React from 'react';
 
 import { Container } from './styles';
+import Header from '../../components/Header';
 
 const ListOccurrences: React.FC = () => {
   return (
-    <Container>
-      <h1>Listagem</h1>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <h1>Listagem</h1>
+      </Container>
+    </>
   );
 };
 
