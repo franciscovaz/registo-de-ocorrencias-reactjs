@@ -1,27 +1,26 @@
-import React, {
-  FormEvent,
-  useState,
-  useEffect,
-  useRef,
-  ChangeEvent,
-} from 'react';
-import { Form } from '@unform/web';
+import React, { FormEvent, useState, useEffect, ChangeEvent } from 'react';
 
 import { FormContainer, Field } from './styles';
 
 import Header from '../../components/Header';
 
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import { useToast } from '../../hooks/toast';
 
 import Dropzone from '../../components/Dropzone';
 import { LeafletMouseEvent } from 'leaflet';
 
 interface OccurrenceRegisterData {
-  title: string;
-  description: string;
-  latitude: number;
-  longitude: number;
-  photo: File;
+  titulo_ocorrencia: string;
+  descricao_ocorrencia: string;
+  data_ocorrencia: string;
+  latitude_ocorrencia: number;
+  longitude_ocorrencia: number;
+  rua_ocorrencia?: string;
+  fk_fotografia: number;
+  fk_freguesia: number;
+  fk_estado: number;
+  fk_utilizador: number;
 }
 
 const CreateOccurence: React.FC = () => {
@@ -37,6 +36,8 @@ const CreateOccurence: React.FC = () => {
 
   const [inputTitle, setInputTitle] = useState('');
   const [textareaDescription, setTextareaDescription] = useState('');
+
+  const { addToast } = useToast();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(location => {
@@ -63,6 +64,19 @@ const CreateOccurence: React.FC = () => {
     e.preventDefault();
     console.log('Input: ', inputTitle);
     console.log('Textarea: ', textareaDescription);
+    console.log('Posição: ', selectedPosition);
+    console.log('File: ', selectedFile);
+
+    if (inputTitle && textareaDescription && selectedPosition && selectedFile) {
+      console.log('Esta tudo preenchido');
+    } else {
+      addToast({
+        type: 'error',
+        title: 'Campos em falta',
+        description:
+          'É necessário preencher todos os campos e selecionar uma imagem',
+      });
+    }
   }
 
   return (
