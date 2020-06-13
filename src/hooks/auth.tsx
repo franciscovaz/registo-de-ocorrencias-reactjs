@@ -15,7 +15,9 @@ interface AuthContextData {
 
 interface AuthState {
   token: string;
-  user: object;
+  user: {
+    id_utilizador: number;
+  };
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -84,7 +86,9 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ auth: authData.user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ auth: Object(authData.user.id_utilizador), signIn, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   );

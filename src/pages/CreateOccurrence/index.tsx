@@ -10,6 +10,13 @@ import { useToast } from '../../hooks/toast';
 import Dropzone from '../../components/Dropzone';
 import { LeafletMouseEvent } from 'leaflet';
 
+import * as firebase from 'firebase';
+import config from '../../services/firebase-config';
+import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
+
+firebase.initializeApp(config);
+
 interface OccurrenceRegisterData {
   titulo_ocorrencia: string;
   descricao_ocorrencia: string;
@@ -38,6 +45,7 @@ const CreateOccurence: React.FC = () => {
   const [textareaDescription, setTextareaDescription] = useState('');
 
   const { addToast } = useToast();
+  const { auth } = useAuth();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(location => {
@@ -69,6 +77,51 @@ const CreateOccurence: React.FC = () => {
 
     if (inputTitle && textareaDescription && selectedPosition && selectedFile) {
       console.log('Esta tudo preenchido');
+
+      const storage = firebase.storage();
+
+      const uploadTask = storage
+        .ref(`images/${selectedFile.name}`)
+        .put(selectedFile);
+
+      uploadTask.on(
+        'state_changed',
+        snapshot => {
+          // progress function
+        },
+        error => {
+          // error function
+          console.log(error);
+        },
+        () => {
+          // complete function
+          storage
+            .ref('images')
+            .child(selectedFile.name)
+            .getDownloadURL()
+            .then(async url => {
+              console.log(url);
+              const photoIdOnDB = await api.post('fotografia', {
+                url_fotografia: url,
+              });
+
+              console.log(initialPosition[0]);
+              console.log(initialPosition[1]);
+
+              await api.post('ocorrencia', {
+                titulo_ocorrencia: inputTitle,
+                descricao_ocorrencia: textareaDescription,
+                data_ocorrencia: new Date(),
+                latitude_ocorrencia: initialPosition[0],
+                longitude_ocorrencia: initialPosition[1],
+                fk_fotografia: photoIdOnDB.data,
+                fk_freguesia: 1,
+                fk_estado: 1,
+                fk_utilizador: Number(auth),
+              });
+            });
+        },
+      );
     } else {
       addToast({
         type: 'error',
