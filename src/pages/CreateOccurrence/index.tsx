@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useEffect, ChangeEvent } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import { FormContainer, Field } from './styles';
 
 import Header from '../../components/Header';
@@ -47,6 +47,8 @@ const CreateOccurence: React.FC = () => {
   const { addToast } = useToast();
   const { auth } = useAuth();
 
+  const history = useHistory();
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(location => {
       const { latitude, longitude } = location.coords;
@@ -70,14 +72,8 @@ const CreateOccurence: React.FC = () => {
 
   async function handleSubmitForm(e: FormEvent) {
     e.preventDefault();
-    console.log('Input: ', inputTitle);
-    console.log('Textarea: ', textareaDescription);
-    console.log('Posição: ', selectedPosition);
-    console.log('File: ', selectedFile);
 
     if (inputTitle && textareaDescription && selectedPosition && selectedFile) {
-      console.log('Esta tudo preenchido');
-
       const storage = firebase.storage();
 
       const uploadTask = storage
@@ -100,13 +96,9 @@ const CreateOccurence: React.FC = () => {
             .child(selectedFile.name)
             .getDownloadURL()
             .then(async url => {
-              console.log(url);
               const photoIdOnDB = await api.post('fotografia', {
                 url_fotografia: url,
               });
-
-              console.log(initialPosition[0]);
-              console.log(initialPosition[1]);
 
               await api.post('ocorrencia', {
                 titulo_ocorrencia: inputTitle,
@@ -120,6 +112,14 @@ const CreateOccurence: React.FC = () => {
                 fk_utilizador: Number(auth),
               });
             });
+
+          history.push('list-occurrences');
+
+          addToast({
+            type: 'success',
+            title: 'Ocorrência registada com sucesso',
+            description: 'A sua ocorrência foi registada com sucesso!',
+          });
         },
       );
     } else {
