@@ -30,6 +30,10 @@ interface OccurrenceRegisterData {
   fk_utilizador: number;
 }
 
+interface UserId {
+  id_utilizador: number;
+}
+
 const CreateOccurence: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
@@ -100,6 +104,8 @@ const CreateOccurence: React.FC = () => {
                 url_fotografia: url,
               });
 
+              const userId = auth as UserId;
+
               await api.post('ocorrencia', {
                 titulo_ocorrencia: inputTitle,
                 descricao_ocorrencia: textareaDescription,
@@ -108,8 +114,9 @@ const CreateOccurence: React.FC = () => {
                 longitude_ocorrencia: initialPosition[1],
                 fk_fotografia: photoIdOnDB.data,
                 fk_freguesia: 1,
+                fk_distrito: 1,
                 fk_estado: 1,
-                fk_utilizador: Number(auth),
+                fk_utilizador: userId.id_utilizador,
               });
             });
 

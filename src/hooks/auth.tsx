@@ -90,7 +90,11 @@ const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ auth: Object(authData.user.id_utilizador), signIn, signOut }}
+      value={{
+        auth: authData.user,
+        signIn,
+        signOut,
+      }}
     >
       {children}
     </AuthContext.Provider>
