@@ -18,8 +18,8 @@
 
 ## 💇🏻‍♂️ About the project
 
-This is the web repository to an app for registry occurrences in some city, village, or other.
-For example, if you go on the street and see an hole, you can take a foto, describe the situation and send it to the competent authorities. They will address the issue and you will receive an email.
+This is the web repository to an app for register occurrences in some city, village, or other.
+For example, if you go on the street and see an hole, you can take a photo, describe the situation and send it to the competent authorities. They will address the issue and you will receive an email.
 
 I already made an application with the same purpose in Angular, however and wanting to learn ReactJS, I decided to do the application again 🚀
 
@@ -55,7 +55,6 @@ This project is still in development!
   - axios
   - leaflet
   - react-leaflet
-  - JWT
   - API Context
 
 ---
