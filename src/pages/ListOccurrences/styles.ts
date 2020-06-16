@@ -7,6 +7,11 @@ export const Container = styled.div`
   padding: 40px 20px;
 `;
 
+export const Title = styled.h1`
+  text-align: center;
+  font-size: 38px;
+`;
+
 export const TableContainer = styled.section`
   margin-top: 64px;
 

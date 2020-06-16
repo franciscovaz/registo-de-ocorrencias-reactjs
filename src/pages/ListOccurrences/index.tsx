@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, TableContainer } from './styles';
+import { Container, Title, TableContainer } from './styles';
 import Header from '../../components/Header';
 
 const ListOccurrences: React.FC = () => {
@@ -8,7 +8,7 @@ const ListOccurrences: React.FC = () => {
     <>
       <Header />
       <Container>
-        <h1>Listagem</h1>
+        <Title>Listagem de Ocorrências</Title>
 
         <TableContainer>
           <table>
