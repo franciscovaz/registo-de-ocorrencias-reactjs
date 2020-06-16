@@ -6,6 +6,7 @@ export default createGlobalStyle`
   --primary-color: #ff9000;
   --title-color: #312E38;
   --text-color: #6c6c80;
+  --text-color-white: #fff;
 }
 
 
@@ -17,8 +18,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #312E38;
-    color: #FFF;
+    background: #c0c1c4;
+    color: #606062;
     -webkit-font-smoothing: antialiased;
   }
 

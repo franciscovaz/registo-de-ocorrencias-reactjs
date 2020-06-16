@@ -10,7 +10,7 @@ export const FormContainer = styled.div`
     margin: 80px auto;
     padding: 64px;
     max-width: 730px;
-    background: #ff9000;
+    background: #fff;
     border-radius: 8px;
 
     display: flex;

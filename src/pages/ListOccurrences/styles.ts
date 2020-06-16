@@ -10,17 +10,18 @@ export const Container = styled.div`
 export const Title = styled.h1`
   text-align: center;
   font-size: 38px;
+  color: var(--text-color-white);
 `;
 
 export const TableContainer = styled.section`
-  margin-top: 64px;
+  margin-top: 44px;
 
   table {
     width: 100%;
     border-spacing: 0 8px;
 
     th {
-      color: #969cb3;
+      color: #606062;
       font-weight: normal;
       padding: 20px 32px;
       text-align: left;
