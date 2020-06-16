@@ -5,6 +5,10 @@ export const Container = styled.header`
   background: #28262e;
 `;
 
+interface LinkProps {
+  name: string;
+}
+
 export const HeaderContent = styled.div`
   max-width: 1120px;
   margin: 0 auto;
