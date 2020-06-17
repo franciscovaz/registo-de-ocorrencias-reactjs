@@ -141,7 +141,7 @@ const CreateOccurence: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header page="register" />
       <FormContainer>
         <form onSubmit={handleSubmitForm}>
           <h1>

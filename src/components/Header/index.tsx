@@ -7,16 +7,29 @@ import { FiPower } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 
-const Header: React.FC = ({ children }) => {
+interface HeaderProps {
+  page?: 'list' | 'register';
+}
+
+const Header: React.FC<HeaderProps> = ({ page = 'list' }: HeaderProps) => {
   const { signOut } = useAuth();
   return (
     <Container>
-      {children}
       <HeaderContent>
         <img src={imgLogo} alt="Registo de ocorrencias" />
         <MenuItems>
-          <Link to="/create-occurrence">Registar Ocorrência</Link>
-          <Link to="/list-occurrences">Listar Ocorrêncis</Link>
+          <Link
+            className={page === 'register' ? 'underline' : ''}
+            to="/create-occurrence"
+          >
+            Registar Ocorrência
+          </Link>
+          <Link
+            className={page === 'list' ? 'underline' : ''}
+            to="/list-occurrences"
+          >
+            Listar Ocorrêncis
+          </Link>
         </MenuItems>
 
         <button type="button" onClick={signOut}>

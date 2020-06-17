@@ -53,5 +53,9 @@ export const MenuItems = styled.div`
     & + a {
       margin-left: 40px;
     }
+
+    &.underline {
+      border-bottom: 2px solid #ff9000;
+    }
   }
 `;
