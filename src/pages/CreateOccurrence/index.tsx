@@ -30,7 +30,7 @@ interface OccurrenceRegisterData {
   fk_utilizador: number;
 }
 
-interface UserId {
+export interface UserId {
   id_utilizador: number;
 }
 

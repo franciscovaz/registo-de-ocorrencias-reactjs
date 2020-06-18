@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Container, Title, TableContainer } from './styles';
 import Header from '../../components/Header';
 import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
+import { UserId } from '../CreateOccurrence';
 
 interface OccurrenceProps {
   id_ocorrencia: string;
@@ -24,11 +26,15 @@ interface OccurrenceProps {
 const ListOccurrences: React.FC = () => {
   const [occurrences, setOccurrences] = useState<OccurrenceProps[]>([]);
 
+  const { auth } = useAuth();
+
   useEffect(() => {
-    api.get(`ocorrencia-user/56`).then(response => {
+    const user = auth as UserId;
+
+    api.get(`ocorrencia-user/${user.id_utilizador}`).then(response => {
       setOccurrences(response.data);
     });
-  }, []);
+  }, [auth]);
 
   return (
     <>
