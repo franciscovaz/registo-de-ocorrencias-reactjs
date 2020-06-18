@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Container, Title, TableContainer } from './styles';
 import Header from '../../components/Header';
+import api from '../../services/api';
+
+interface OccurrenceProps {
+  id_ocorrencia: string;
+  titulo_ocorrencia: string;
+  descricao_ocorrencia: string;
+  data_ocorrencia: string;
+  latitude_ocorrencia: string;
+  longitude_ocorrencia: string;
+  rua_ocorrencia: string;
+  url_fotografia: string;
+  nome_utilizador: string;
+  email_utilizador: string;
+  telemovel_utilizador: string;
+  descricao_estado: string;
+  comentario_ocorrencia: string;
+  data_ultima_atualizacao_ocorrencia: string;
+}
 
 const ListOccurrences: React.FC = () => {
+  const [occurrences, setOccurrences] = useState<OccurrenceProps[]>([]);
+
+  useEffect(() => {
+    api.get(`ocorrencia-user/56`).then(response => {
+      setOccurrences(response.data);
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -18,42 +44,20 @@ const ListOccurrences: React.FC = () => {
                 <th>Utilizador</th>
                 <th>Comentário</th>
                 <th>Estado</th>
-                <th>Data</th>
+                <th>Data de Criação</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
-                <td>Buraco na rua da mota</td>
-                <td>Tomas</td>
-                <td>Sem comentários</td>
-                <td>Em análise</td>
-                <td>29-03-2020</td>
-              </tr>
-
-              <tr>
-                <td>Passeio sem tampa de esgoto</td>
-                <td>Francisco</td>
-                <td>Colocada nova tampa</td>
-                <td>Terminado</td>
-                <td>20-04-2020</td>
-              </tr>
-
-              <tr>
-                <td>Contentor do lixo deslocado</td>
-                <td>Jose</td>
-                <td>Sem comentários</td>
-                <td>Por tratar</td>
-                <td>10-06-2020</td>
-              </tr>
-
-              <tr>
-                <td>Buraco na rua da sul</td>
-                <td>Vaz</td>
-                <td>Resolvido</td>
-                <td>Terminado</td>
-                <td>15-06-2020</td>
-              </tr>
+              {occurrences.map(occurrence => (
+                <tr key={occurrence.id_ocorrencia}>
+                  <td>{occurrence.titulo_ocorrencia}</td>
+                  <td>{occurrence.nome_utilizador}</td>
+                  <td>{occurrence.comentario_ocorrencia}</td>
+                  <td>{occurrence.descricao_estado}</td>
+                  <td>{occurrence.data_ocorrencia}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </TableContainer>
