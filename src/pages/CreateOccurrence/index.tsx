@@ -32,6 +32,7 @@ interface OccurrenceRegisterData {
 
 export interface UserId {
   id_utilizador: number;
+  fk_tipo_utilizador: number;
 }
 
 const CreateOccurence: React.FC = () => {

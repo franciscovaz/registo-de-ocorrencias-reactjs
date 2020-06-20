@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Container, Title, TableContainer } from './styles';
 import { FiEdit2 } from 'react-icons/fi';
@@ -34,9 +34,16 @@ const ListOccurrences: React.FC = () => {
   useEffect(() => {
     const user = auth as UserId;
 
-    api.get(`ocorrencia-user/${user.id_utilizador}`).then(response => {
-      setOccurrences(response.data);
-    });
+    if (user.fk_tipo_utilizador === 2) {
+      console.log('sou admin');
+      api.get('ocorrencias').then(response => {
+        setOccurrences(response.data);
+      });
+    } else {
+      api.get(`ocorrencia-user/${user.id_utilizador}`).then(response => {
+        setOccurrences(response.data);
+      });
+    }
   }, [auth]);
 
   function handleEditOccurence(id: number) {
