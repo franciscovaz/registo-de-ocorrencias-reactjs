@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Container, Title, TableContainer } from './styles';
+import { FiEdit2 } from 'react-icons/fi';
 import Header from '../../components/Header';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
@@ -62,6 +63,9 @@ const ListOccurrences: React.FC = () => {
                   <td>{occurrence.comentario_ocorrencia}</td>
                   <td>{occurrence.descricao_estado}</td>
                   <td>{occurrence.data_ocorrencia}</td>
+                  <td>
+                    <FiEdit2 />
+                  </td>
                 </tr>
               ))}
             </tbody>
