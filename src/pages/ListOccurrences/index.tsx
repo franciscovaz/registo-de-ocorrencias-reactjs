@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 import { Container, Title, TableContainer } from './styles';
 import { FiEdit2 } from 'react-icons/fi';
@@ -6,6 +6,8 @@ import Header from '../../components/Header';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { UserId } from '../CreateOccurrence';
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 interface OccurrenceProps {
   id_ocorrencia: string;
@@ -37,6 +39,10 @@ const ListOccurrences: React.FC = () => {
     });
   }, [auth]);
 
+  function handleEditOccurence(id: number) {
+    console.log('ID: ', id);
+  }
+
   return (
     <>
       <Header />
@@ -62,9 +68,24 @@ const ListOccurrences: React.FC = () => {
                   <td>{occurrence.nome_utilizador}</td>
                   <td>{occurrence.comentario_ocorrencia}</td>
                   <td>{occurrence.descricao_estado}</td>
-                  <td>{occurrence.data_ocorrencia}</td>
                   <td>
-                    <FiEdit2 />
+                    {format(
+                      new Date(occurrence.data_ocorrencia),
+                      'dd/MM/yyyy HH:mm:ss',
+                      {
+                        locale: ptBR,
+                      },
+                    )}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleEditOccurence(Number(occurrence.id_ocorrencia))
+                      }
+                    >
+                      <FiEdit2 color={'#606062'} />
+                    </button>
                   </td>
                 </tr>
               ))}

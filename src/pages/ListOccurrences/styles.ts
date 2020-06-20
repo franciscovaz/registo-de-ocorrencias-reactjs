@@ -45,5 +45,10 @@ export const TableContainer = styled.section`
     td:last-child {
       border-radius: 0 8px 8px 0;
     }
+
+    button {
+      background: transparent;
+      border: 0;
+    }
   }
 `;
