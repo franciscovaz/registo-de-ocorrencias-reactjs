@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
 
   align-items: scretch;
+  background: #312e38;
 `;
 
 export const Content = styled.div`
