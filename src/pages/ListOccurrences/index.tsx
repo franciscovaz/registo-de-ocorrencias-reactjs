@@ -47,7 +47,7 @@ const ListOccurrences: React.FC = () => {
   }, [auth]);
 
   function handleEditOccurence(id: number) {
-    console.log('ID: ', id);
+    console.log('Id: ', id);
   }
 
   return (
