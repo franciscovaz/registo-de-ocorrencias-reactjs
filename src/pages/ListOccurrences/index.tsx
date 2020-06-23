@@ -48,6 +48,7 @@ const ListOccurrences: React.FC = () => {
 
   function handleEditOccurence(id: number) {
     console.log('Id: ', id);
+    // call modal here
   }
 
   return (
