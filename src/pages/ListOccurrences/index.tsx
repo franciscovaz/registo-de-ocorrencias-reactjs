@@ -35,7 +35,6 @@ const ListOccurrences: React.FC = () => {
     const user = auth as UserId;
 
     if (user.fk_tipo_utilizador === 2) {
-      console.log('sou admin');
       api.get('ocorrencias').then(response => {
         setOccurrences(response.data);
       });

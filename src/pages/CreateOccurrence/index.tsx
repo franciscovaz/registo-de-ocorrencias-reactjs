@@ -119,9 +119,9 @@ const CreateOccurence: React.FC = () => {
                 fk_estado: 1,
                 fk_utilizador: userId.id_utilizador,
               });
-            });
 
-          history.push('list-occurrences');
+              history.push('list-occurrences');
+            });
 
           addToast({
             type: 'success',
