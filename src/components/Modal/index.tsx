@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { FiXCircle } from 'react-icons/fi';
 import { ModalContainer, ModalHeader, ModalContent, Actions } from './styles';
 import './styles';
 
@@ -17,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) =>
             <ModalHeader>
               <h2>Ocorrencia: {occurrenceId}</h2>
               <button type="button" onClick={hide}>
-                x
+                <FiXCircle />
               </button>
             </ModalHeader>
 
