@@ -8,6 +8,8 @@ import { useAuth } from '../../hooks/auth';
 import { UserId } from '../CreateOccurrence';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
+import { useModal } from '../../hooks/modal';
+import Modal from '../../components/Modal';
 
 interface OccurrenceProps {
   id_ocorrencia: string;
@@ -30,6 +32,7 @@ const ListOccurrences: React.FC = () => {
   const [occurrences, setOccurrences] = useState<OccurrenceProps[]>([]);
 
   const { auth } = useAuth();
+  const { isShowing, toggle } = useModal();
 
   useEffect(() => {
     const user = auth as UserId;
@@ -43,11 +46,13 @@ const ListOccurrences: React.FC = () => {
         setOccurrences(response.data);
       });
     }
-  }, [auth]);
+  }, [auth, isShowing]);
 
   function handleEditOccurence(id: number) {
     console.log('Id: ', id);
     // call modal here
+    //toggle();
+    console.log(isShowing);
   }
 
   return (
@@ -85,12 +90,7 @@ const ListOccurrences: React.FC = () => {
                     )}
                   </td>
                   <td>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        handleEditOccurence(Number(occurrence.id_ocorrencia))
-                      }
-                    >
+                    <button type="button" onClick={toggle}>
                       <FiEdit2 color={'#606062'} />
                     </button>
                   </td>
@@ -100,6 +100,7 @@ const ListOccurrences: React.FC = () => {
           </table>
         </TableContainer>
       </Container>
+      <Modal isShowing={isShowing} hide={toggle} />
     </>
   );
 };

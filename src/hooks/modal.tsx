@@ -1,18 +1,18 @@
 import React, { createContext, useState, useCallback, useContext } from 'react';
 
-interface ModalData {
+interface ModalContextData {
   isShowing: boolean;
   toggle(): void;
 }
 
-const ModalContext = createContext<ModalData>({} as ModalData);
+const ModalContext = createContext<ModalContextData>({} as ModalContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
 
   const toggle = useCallback(() => {
     setIsShowing(!isShowing);
-  }, []);
+  }, [isShowing]);
 
   return (
     <ModalContext.Provider value={{ isShowing, toggle }}>
@@ -22,7 +22,7 @@ const ModalProvider: React.FC = ({ children }) => {
 };
 
 //hook
-function useModal(): ModalData {
+function useModal(): ModalContextData {
   const context = useContext(ModalContext);
 
   if (!context) {
@@ -31,4 +31,4 @@ function useModal(): ModalData {
   return context;
 }
 
-export { useModal, ModalProvider };
+export { ModalProvider, useModal };

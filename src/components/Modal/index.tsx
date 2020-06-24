@@ -1,39 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Container } from './styles';
+import { ModalContainer, ModalHeader, ModalContent, Actions } from './styles';
+import './styles';
 
 interface ModalProps {
   isShowing: boolean;
-  hide: boolean;
+  hide(): void;
 }
 
 const Modal: React.FC<ModalProps> = ({ isShowing, hide }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
-          <div className="modal-overlay" />
-          <div
-            className="modal-wrapper"
-            aria-modal
-            aria-hidden
-            tabIndex={-1}
-            role="dialog"
-          >
-            <div className="modal">
-              <div className="modal-header">
-                <button
-                  type="button"
-                  className="modal-close-button"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={() => hide}
-                >
-                  <span area-hidden="true">&times;</span>
-                </button>
-              </div>
-              <p>Conteudo do modal!</p>
-            </div>
-          </div>
+          <ModalContainer>
+            <ModalHeader>
+              <h2>Modal Window</h2>
+              <button type="button" onClick={hide}>
+                x
+              </button>
+            </ModalHeader>
+
+            <ModalContent>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
+              deserunt corrupti, ut fugit magni qui quasi nisi amet repellendus
+              non fuga omnis a sed impedit explicabo accusantium nihil
+              doloremque consequuntur.
+            </ModalContent>
+            <Actions>
+              <button>Update</button>
+            </Actions>
+          </ModalContainer>
         </React.Fragment>,
         document.body,
       )
