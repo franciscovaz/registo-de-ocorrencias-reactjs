@@ -42,6 +42,9 @@ This project is still in development!
 <h1 align="center">
   <img height="500" alt="Registo de Ocorrência" src="https://user-images.githubusercontent.com/27808014/84532433-231c5d00-acde-11ea-8d24-ce2fb055882e.png">
 </h1>
+<h1 align="center">
+  <img height="500" alt="Listagem de Ocorrências" src="https://user-images.githubusercontent.com/27808014/85603740-8f854d80-b648-11ea-95f2-2d555c45ff56.png">
+</h1>
 
 ---
 
