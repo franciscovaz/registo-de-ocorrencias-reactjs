@@ -6,15 +6,16 @@ import './styles';
 interface ModalProps {
   isShowing: boolean;
   hide(): void;
+  occurrenceId: number;
 }
 
-const Modal: React.FC<ModalProps> = ({ isShowing, hide }) =>
+const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
           <ModalContainer>
             <ModalHeader>
-              <h2>Modal Window</h2>
+              <h2>Ocorrencia: {occurrenceId}</h2>
               <button type="button" onClick={hide}>
                 x
               </button>

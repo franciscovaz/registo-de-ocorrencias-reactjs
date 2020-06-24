@@ -30,6 +30,7 @@ interface OccurrenceProps {
 
 const ListOccurrences: React.FC = () => {
   const [occurrences, setOccurrences] = useState<OccurrenceProps[]>([]);
+  const [selectedOccurrence, setSelectedOccurrence] = useState(0);
 
   const { auth } = useAuth();
   const { isShowing, toggle } = useModal();
@@ -48,11 +49,8 @@ const ListOccurrences: React.FC = () => {
     }
   }, [auth, isShowing]);
 
-  function handleEditOccurence(id: number) {
-    console.log('Id: ', id);
-    // call modal here
-    //toggle();
-    console.log(isShowing);
+  function handleChangeOccurence(id: number) {
+    setSelectedOccurrence(id);
   }
 
   return (
@@ -90,7 +88,13 @@ const ListOccurrences: React.FC = () => {
                     )}
                   </td>
                   <td>
-                    <button type="button" onClick={toggle}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        toggle();
+                        handleChangeOccurence(Number(occurrence.id_ocorrencia));
+                      }}
+                    >
                       <FiEdit2 color={'#606062'} />
                     </button>
                   </td>
@@ -100,7 +104,11 @@ const ListOccurrences: React.FC = () => {
           </table>
         </TableContainer>
       </Container>
-      <Modal isShowing={isShowing} hide={toggle} />
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+        occurrenceId={selectedOccurrence}
+      />
     </>
   );
 };
