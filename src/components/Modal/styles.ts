@@ -50,15 +50,15 @@ export const ModalContent = styled.div`
 `;
 
 export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-top: 1px solid #ccc;
-  background: #eee;
+
   padding: 0.5rem 1rem;
+
   button {
     border: 0;
-    background: #78f89f;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    line-height: 1;
+    background: transparent;
   }
 `;
