@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { FiXCircle } from 'react-icons/fi';
 import { ModalContainer, ModalHeader, ModalContent, Actions } from './styles';
 import './styles';
+import api from '../../services/api';
 
 interface ModalProps {
   isShowing: boolean;
@@ -10,8 +11,16 @@ interface ModalProps {
   occurrenceId: number;
 }
 
-const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) =>
-  isShowing
+const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
+  useEffect(() => {
+    if (occurrenceId !== 0) {
+      api.get(`ocorrencia/${occurrenceId}`).then(response => {
+        console.log('Resposta: ', response.data);
+      });
+    }
+  }, [occurrenceId]);
+
+  return isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
           <ModalContainer>
@@ -36,5 +45,6 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) =>
         document.body,
       )
     : null;
+};
 
 export default Modal;
