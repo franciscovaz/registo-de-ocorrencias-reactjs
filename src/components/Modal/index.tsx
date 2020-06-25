@@ -32,24 +32,22 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
   const [occurrence, setOccurrence] = useState<OccurrenceData>(
     {} as OccurrenceData,
   );
-  const [selectedValue, setSelectedValue] = useState('Por Tratar');
+  const [selectedValue, setSelectedValue] = useState('');
 
   useEffect(() => {
     if (occurrenceId !== 0) {
       api.get(`ocorrencia/${occurrenceId}`).then(response => {
-        console.log('Resposta: ', response.data[0]);
         setOccurrence(response.data[0]);
+        setSelectedValue(occurrence.descricao_estado);
       });
     }
-  }, [occurrenceId]);
+  }, [occurrenceId, occurrence.descricao_estado]);
 
   const handleEditOccurrence = useCallback(() => {
-    console.log('Quero editar');
     console.log('Valor do select: ', selectedValue);
   }, [selectedValue]);
 
   const handleChangeProgressState = useCallback(event => {
-    console.log('Select changed: ', event.target.value);
     setSelectedValue(event.target.value);
   }, []);
 

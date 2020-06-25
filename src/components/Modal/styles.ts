@@ -36,6 +36,15 @@ export const ModalContent = styled.div`
     text-align: center;
     margin-bottom: 20px;
   }
+
+  p {
+    margin-top: 8px;
+  }
+
+  select {
+    margin-left: 5px;
+    border-radius: 4px;
+  }
 `;
 
 export const Actions = styled.div`
