@@ -32,6 +32,8 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
   const [occurrence, setOccurrence] = useState<OccurrenceData>(
     {} as OccurrenceData,
   );
+  const [selectedValue, setSelectedValue] = useState('Por Tratar');
+
   useEffect(() => {
     if (occurrenceId !== 0) {
       api.get(`ocorrencia/${occurrenceId}`).then(response => {
@@ -43,6 +45,12 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
 
   const handleEditOccurrence = useCallback(() => {
     console.log('Quero editar');
+    console.log('Valor do select: ', selectedValue);
+  }, [selectedValue]);
+
+  const handleChangeProgressState = useCallback(event => {
+    console.log('Select changed: ', event.target.value);
+    setSelectedValue(event.target.value);
   }, []);
 
   return isShowing
@@ -52,17 +60,35 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
             <ModalHeader>
               <h2>Atualizaçāo do estado da ocorrência</h2>
               <button type="button" onClick={hide}>
-                <FiXCircle />
+                <FiXCircle size={20} color={'#ff9000'} />
               </button>
             </ModalHeader>
 
             <ModalContent>
               <h3>{occurrence.titulo_ocorrencia}</h3>
-              <p>Estado atual: {occurrence.descricao_estado}</p>
+
+              <p>
+                <b>Estado atual:</b> {occurrence.descricao_estado}
+              </p>
+              <p>
+                <b>Novo estado:</b>
+                <select
+                  name="newState"
+                  id="newState"
+                  value={selectedValue}
+                  onChange={handleChangeProgressState}
+                >
+                  <option value="Por Tratar">Por Tratar</option>
+                  <option value="Em análise">Em análise</option>
+                  <option value="Em progresso">Em progresso</option>
+                  <option value="Finalizado">Finalizado</option>
+                  <option value="Cancelado">Cancelado</option>
+                </select>
+              </p>
             </ModalContent>
             <Actions>
               <button type="button" onClick={handleEditOccurrence}>
-                <FiEdit size={20} />
+                <FiEdit size={20} color={'#ff9000'} />
               </button>
             </Actions>
           </ModalContainer>
