@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { FiXCircle, FiEdit } from 'react-icons/fi';
 import { ModalContainer, ModalHeader, ModalContent, Actions } from './styles';
@@ -41,6 +41,10 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
     }
   }, [occurrenceId]);
 
+  const handleEditOccurrence = useCallback(() => {
+    console.log('Quero editar');
+  }, []);
+
   return isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -57,7 +61,7 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
               <p>Estado atual: {occurrence.descricao_estado}</p>
             </ModalContent>
             <Actions>
-              <button>
+              <button type="button" onClick={handleEditOccurrence}>
                 <FiEdit size={20} />
               </button>
             </Actions>
