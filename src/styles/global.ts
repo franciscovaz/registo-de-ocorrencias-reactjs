@@ -7,6 +7,7 @@ export default createGlobalStyle`
   --title-color: #312E38;
   --text-color: #6c6c80;
   --text-color-white: #fff;
+  --background-color: #c0c1c4;
 }
 
 
