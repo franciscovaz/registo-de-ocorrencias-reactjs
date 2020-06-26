@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { FiXCircle, FiEdit } from 'react-icons/fi';
-import { ModalContainer, ModalHeader, ModalContent, Actions } from './styles';
+import {
+  ModalContainer,
+  ModalHeader,
+  ModalContent,
+  Actions,
+  ModalOverlay,
+} from './styles';
 import './styles';
 import api from '../../services/api';
 
@@ -90,6 +96,7 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
               </button>
             </Actions>
           </ModalContainer>
+          <ModalOverlay />
         </React.Fragment>,
         document.body,
       )
