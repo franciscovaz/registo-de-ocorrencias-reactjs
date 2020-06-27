@@ -28,7 +28,7 @@ export const FormContainer = styled.div`
     }
 
     fieldset {
-      margin-top: 64px;
+      margin-top: 36px;
       min-inline-size: auto;
       border: 0;
     }
