@@ -17,19 +17,6 @@ import { useAuth } from '../../hooks/auth';
 
 firebase.initializeApp(config);
 
-interface OccurrenceRegisterData {
-  titulo_ocorrencia: string;
-  descricao_ocorrencia: string;
-  data_ocorrencia: string;
-  latitude_ocorrencia: number;
-  longitude_ocorrencia: number;
-  rua_ocorrencia?: string;
-  fk_fotografia: number;
-  fk_freguesia: number;
-  fk_estado: number;
-  fk_utilizador: number;
-}
-
 export interface UserId {
   id_utilizador: number;
   fk_tipo_utilizador: number;
@@ -168,7 +155,7 @@ const CreateOccurence: React.FC = () => {
             <Field>
               <label htmlFor="description">Descrição</label>
               <textarea
-                rows={10}
+                rows={7}
                 name="description"
                 id="description"
                 onChange={handleTextareaChange}
