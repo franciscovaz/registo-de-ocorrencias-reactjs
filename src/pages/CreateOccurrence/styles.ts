@@ -95,7 +95,7 @@ export const Field = styled.div`
 
   textarea {
     flex: 1;
-    background: #f0f0f5;
+    background: var(--textarea-background);
     border-radius: 8px;
     border: 0;
     padding: 16px 24px;

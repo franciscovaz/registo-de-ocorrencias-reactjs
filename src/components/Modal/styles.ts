@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
-  /* width: 550px;
-  min-width: 500px;
-  background: white;
-  border: 1px solid #ccc;
-  box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
-  border-radius: 8px; */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -53,6 +47,10 @@ export const ModalContent = styled.div`
     margin-bottom: 20px;
   }
 
+  h4 {
+    font-size: 18px;
+  }
+
   p {
     margin-top: 8px;
   }
@@ -60,6 +58,15 @@ export const ModalContent = styled.div`
   select {
     margin-left: 5px;
     border-radius: 4px;
+  }
+
+  textarea {
+    flex: 1;
+    border: 0;
+    border-radius: 8px;
+    padding: 14px 20px;
+    background: var(--textarea-background);
+    margin-top: 8px;
   }
 `;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, ChangeEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { FiXCircle, FiEdit } from 'react-icons/fi';
 import {
@@ -57,6 +57,13 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
     setSelectedValue(event.target.value);
   }, []);
 
+  const handleCommentChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      console.log(e.target.value);
+    },
+    [],
+  );
+
   return isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -71,9 +78,7 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
             <ModalContent>
               <h3>{occurrence.titulo_ocorrencia}</h3>
 
-              <p>
-                <b>Estado atual:</b> {occurrence.descricao_estado}
-              </p>
+              <h4>Estado atual: {occurrence.descricao_estado}</h4>
               <p>
                 <b>Novo estado:</b>
                 <select
@@ -89,6 +94,16 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
                   <option value="Cancelado">Cancelado</option>
                 </select>
               </p>
+
+              <p>
+                <b>Comentário:</b>
+              </p>
+              <textarea
+                rows={7}
+                name="comment"
+                id="comment"
+                onChange={handleCommentChange}
+              />
             </ModalContent>
             <Actions>
               <button type="button" onClick={handleEditOccurrence}>
