@@ -8,6 +8,7 @@ export default createGlobalStyle`
   --text-color: #6c6c80;
   --text-color-white: #fff;
   --background-color: #c0c1c4;
+  --textarea-background: #f0f0f5;
 }
 
 
