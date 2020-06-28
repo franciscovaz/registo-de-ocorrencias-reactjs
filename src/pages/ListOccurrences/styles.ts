@@ -49,6 +49,10 @@ export const TableContainer = styled.section`
     button {
       background: transparent;
       border: 0;
+
+      & + button {
+        margin-left: 10px;
+      }
     }
   }
 `;

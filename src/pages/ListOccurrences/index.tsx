@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Container, Title, TableContainer } from './styles';
-import { FiEdit2 } from 'react-icons/fi';
+import { FiEdit2, FiEye } from 'react-icons/fi';
 import Header from '../../components/Header';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
@@ -56,6 +56,10 @@ const ListOccurrences: React.FC = () => {
     setSelectedOccurrence(id);
   }
 
+  function handleViewOccurrenceModal(id: number) {
+    console.log('Occurrence ID: ', id);
+  }
+
   return (
     <>
       <Header />
@@ -90,8 +94,19 @@ const ListOccurrences: React.FC = () => {
                       },
                     )}
                   </td>
-                  {isAdmin && (
-                    <td>
+
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleViewOccurrenceModal(
+                          Number(occurrence.id_ocorrencia),
+                        );
+                      }}
+                    >
+                      <FiEye color={'#606062'} />
+                    </button>
+                    {isAdmin && (
                       <button
                         type="button"
                         onClick={() => {
@@ -103,8 +118,8 @@ const ListOccurrences: React.FC = () => {
                       >
                         <FiEdit2 color={'#606062'} />
                       </button>
-                    </td>
-                  )}
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
