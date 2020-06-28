@@ -31,16 +31,19 @@ interface OccurrenceProps {
 const ListOccurrences: React.FC = () => {
   const [occurrences, setOccurrences] = useState<OccurrenceProps[]>([]);
   const [selectedOccurrence, setSelectedOccurrence] = useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const { auth } = useAuth();
   const { isShowing, toggle } = useModal();
 
   useEffect(() => {
     const user = auth as UserId;
+    console.log(user);
 
     if (user.fk_tipo_utilizador === 2) {
       api.get('ocorrencias').then(response => {
         setOccurrences(response.data);
+        setIsAdmin(true);
       });
     } else {
       api.get(`ocorrencia-user/${user.id_utilizador}`).then(response => {
@@ -87,17 +90,21 @@ const ListOccurrences: React.FC = () => {
                       },
                     )}
                   </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        toggle();
-                        handleChangeOccurence(Number(occurrence.id_ocorrencia));
-                      }}
-                    >
-                      <FiEdit2 color={'#606062'} />
-                    </button>
-                  </td>
+                  {isAdmin && (
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          toggle();
+                          handleChangeOccurence(
+                            Number(occurrence.id_ocorrencia),
+                          );
+                        }}
+                      >
+                        <FiEdit2 color={'#606062'} />
+                      </button>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
