@@ -38,7 +38,6 @@ const ListOccurrences: React.FC = () => {
 
   useEffect(() => {
     const user = auth as UserId;
-    console.log(user);
 
     if (user.fk_tipo_utilizador === 2) {
       api.get('ocorrencias').then(response => {

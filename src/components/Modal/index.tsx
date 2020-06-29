@@ -55,16 +55,21 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
     }
   }, [occurrenceId, occurrence.descricao_estado]);
 
-  const handleEditOccurrence = useCallback(() => {
+  const handleEditOccurrence = useCallback(async () => {
     if (!occurrenceComment) {
-      console.log('vou setar');
       setHasErrorComment(true);
     } else {
+      const response = await api.put(`ocorrencia-update/${occurrenceId}`, {
+        comentario_ocorrencia: occurrenceComment,
+        fk_estado: Number(selectedValue),
+        data_ultima_atualizacao_ocorrencia: new Date().toISOString(),
+      });
+
       hide();
       addToast({
         type: 'success',
         title: 'Ocurrência editada com sucesso',
-        description: 'O estado da ocorrência foi editado com sucesso.',
+        description: response.data,
       });
       setHasErrorComment(false);
     }
@@ -104,11 +109,11 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
                   value={selectedValue}
                   onChange={handleChangeProgressState}
                 >
-                  <option value="Por Tratar">Por Tratar</option>
-                  <option value="Em análise">Em análise</option>
-                  <option value="Em progresso">Em progresso</option>
-                  <option value="Finalizado">Finalizado</option>
-                  <option value="Cancelado">Cancelado</option>
+                  <option value="1">Por Tratar</option>
+                  <option value="2">Em análise</option>
+                  <option value="3">Em progresso</option>
+                  <option value="4">Finalizado</option>
+                  <option value="5">Cancelado</option>
                 </select>
               </p>
 
