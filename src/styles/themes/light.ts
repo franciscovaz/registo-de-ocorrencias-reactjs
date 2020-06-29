@@ -7,7 +7,11 @@ export default {
 
     headerBackground: '#28262e',
 
-    background: '#f5f5f5',
+    registerCardBackground: '#C5C3C6',
+
+    fieldsetSpanColor: '#312E38',
+
+    background: '#dedede',
     text: '#333',
   },
 };

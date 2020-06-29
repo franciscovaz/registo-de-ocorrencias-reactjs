@@ -10,6 +10,10 @@ declare module 'styled-components' {
 
       headerBackground: string;
 
+      registerCardBackground: string;
+
+      fieldsetSpanColor: string;
+
       background: string;
       text: string;
     };

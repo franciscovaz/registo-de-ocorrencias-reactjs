@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   text-align: center;
   font-size: 38px;
-  color: var(--text-color-white);
+  color: ${props => props.theme.colors.fieldsetSpanColor};
 `;
 
 export const TableContainer = styled.section`
@@ -21,7 +21,7 @@ export const TableContainer = styled.section`
     border-spacing: 0 8px;
 
     th {
-      color: #606062;
+      color: ${props => props.theme.colors.fieldsetSpanColor};
       font-weight: normal;
       padding: 20px 32px;
       text-align: left;
@@ -32,10 +32,10 @@ export const TableContainer = styled.section`
     td {
       padding: 20px 32px;
       border: 0;
-      background: #fff;
+      background: ${props => props.theme.colors.registerCardBackground};
       font-size: 16px;
       font-weight: normal;
-      color: #969cb3;
+      color: ${props => props.theme.colors.text};
     }
 
     td:first-child {

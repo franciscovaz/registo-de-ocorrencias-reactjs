@@ -10,7 +10,7 @@ export const FormContainer = styled.div`
     margin: 80px auto;
     padding: 64px;
     max-width: 730px;
-    background: #fff;
+    background: ${props => props.theme.colors.registerCardBackground};
     border-radius: 8px;
 
     display: flex;
@@ -47,7 +47,7 @@ export const FormContainer = styled.div`
       span {
         font-size: 14px;
         font-weight: normal;
-        color: var(--text-color);
+        color: ${props => props.theme.colors.fieldsetSpanColor};
       }
     }
 
