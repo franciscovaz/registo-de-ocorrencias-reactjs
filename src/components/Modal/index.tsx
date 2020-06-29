@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
       });
       setHasErrorComment(false);
     }
-  }, [occurrenceComment, hide]);
+  }, [occurrenceComment, hide, addToast, occurrenceId, selectedValue]);
 
   const handleChangeProgressState = useCallback(event => {
     setSelectedValue(event.target.value);

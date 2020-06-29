@@ -13,6 +13,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ page = 'list' }: HeaderProps) => {
   const { signOut } = useAuth();
+
   return (
     <Container>
       <HeaderContent>

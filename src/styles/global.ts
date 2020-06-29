@@ -21,8 +21,10 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #c0c1c4;
-    color: #606062;
+    /* background: #c0c1c4;
+    color: #606062; */
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
     -webkit-font-smoothing: antialiased;
   }
 

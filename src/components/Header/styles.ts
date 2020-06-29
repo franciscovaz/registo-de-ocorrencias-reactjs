@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   padding: 32px 0;
-  background: #28262e;
+  background: ${props => props.theme.colors.headerBackground};
 `;
 
 interface LinkProps {
