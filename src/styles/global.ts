@@ -9,6 +9,7 @@ export default createGlobalStyle`
   --text-color-white: #fff;
   --background-color: #c0c1c4;
   --textarea-background: #f0f0f5;
+  --error-color: #FF0000;
 }
 
 
