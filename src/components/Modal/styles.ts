@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface textareaProps {
+  hasError: boolean;
+}
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -59,15 +63,21 @@ export const ModalContent = styled.div`
     margin-left: 5px;
     border-radius: 4px;
   }
+`;
 
-  textarea {
-    flex: 1;
-    border: 0;
-    border-radius: 8px;
-    padding: 14px 20px;
-    background: var(--textarea-background);
-    margin-top: 8px;
-  }
+export const Textarea = styled.textarea<textareaProps>`
+  flex: 1;
+  border: 0;
+  border-radius: 8px;
+  padding: 14px 20px;
+  background: var(--textarea-background);
+  margin-top: 8px;
+
+  ${props =>
+    props.hasError &&
+    css`
+      border: 1px solid var(--error-color);
+    `}
 `;
 
 export const Actions = styled.div`

@@ -5,11 +5,13 @@ import {
   ModalContainer,
   ModalHeader,
   ModalContent,
+  Textarea,
   Actions,
   ModalOverlay,
 } from './styles';
 import './styles';
 import api from '../../services/api';
+import { useToast } from '../../hooks/toast';
 
 interface ModalProps {
   isShowing: boolean;
@@ -39,6 +41,10 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
     {} as OccurrenceData,
   );
   const [selectedValue, setSelectedValue] = useState('');
+  const [occurrenceComment, setOccurrenceComment] = useState('');
+  const [hasErrorComment, setHasErrorComment] = useState(false);
+
+  const { addToast } = useToast();
 
   useEffect(() => {
     if (occurrenceId !== 0) {
@@ -50,8 +56,19 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
   }, [occurrenceId, occurrence.descricao_estado]);
 
   const handleEditOccurrence = useCallback(() => {
-    console.log('Valor do select: ', selectedValue);
-  }, [selectedValue]);
+    if (!occurrenceComment) {
+      console.log('vou setar');
+      setHasErrorComment(true);
+    } else {
+      hide();
+      addToast({
+        type: 'success',
+        title: 'Ocurrência editada com sucesso',
+        description: 'O estado da ocorrência foi editado com sucesso.',
+      });
+      setHasErrorComment(false);
+    }
+  }, [occurrenceComment, hide]);
 
   const handleChangeProgressState = useCallback(event => {
     setSelectedValue(event.target.value);
@@ -59,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
 
   const handleCommentChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => {
-      console.log(e.target.value);
+      setOccurrenceComment(e.target.value);
     },
     [],
   );
@@ -98,12 +115,16 @@ const Modal: React.FC<ModalProps> = ({ isShowing, hide, occurrenceId }) => {
               <p>
                 <b>Comentário:</b>
               </p>
-              <textarea
+              <Textarea
                 rows={7}
                 name="comment"
                 id="comment"
                 onChange={handleCommentChange}
+                hasError={hasErrorComment}
               />
+              {hasErrorComment && (
+                <p style={{ color: 'red' }}>Insira um comentário</p>
+              )}
             </ModalContent>
             <Actions>
               <button type="button" onClick={handleEditOccurrence}>
