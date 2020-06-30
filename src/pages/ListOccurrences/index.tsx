@@ -9,7 +9,8 @@ import { UserId } from '../CreateOccurrence';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { useModal } from '../../hooks/modal';
-import Modal from '../../components/Modal';
+import Modal from '../../components/Modals/EditOccurrenceStateModal';
+import ViewOccurrenceModal from '../../components/Modals/ViewOccurrenceModal';
 import { ThemeContext } from 'styled-components';
 
 interface OccurrenceProps {
@@ -35,7 +36,7 @@ const ListOccurrences: React.FC = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const { auth } = useAuth();
-  const { isShowing, toggle } = useModal();
+  const { isShowing, isShowingViewModal, toggle, toggleView } = useModal();
 
   const { colors } = useContext(ThemeContext);
 
@@ -52,14 +53,14 @@ const ListOccurrences: React.FC = () => {
         setOccurrences(response.data);
       });
     }
-  }, [auth, isShowing]);
+  }, [auth, isShowing, isShowingViewModal]);
 
   function handleChangeOccurence(id: number) {
     setSelectedOccurrence(id);
   }
 
   function handleViewOccurrenceModal(id: number) {
-    console.log('Occurrence ID: ', id);
+    setSelectedOccurrence(id);
   }
 
   return (
@@ -102,6 +103,7 @@ const ListOccurrences: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => {
+                          toggleView();
                           handleViewOccurrenceModal(
                             Number(occurrence.id_ocorrencia),
                           );
@@ -133,6 +135,11 @@ const ListOccurrences: React.FC = () => {
       <Modal
         isShowing={isShowing}
         hide={toggle}
+        occurrenceId={selectedOccurrence}
+      />
+      <ViewOccurrenceModal
+        isShowingViewModal={isShowingViewModal}
+        hide={toggleView}
         occurrenceId={selectedOccurrence}
       />
     </>

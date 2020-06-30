@@ -2,7 +2,9 @@ import React, { createContext, useState, useCallback, useContext } from 'react';
 
 interface ModalContextData {
   isShowing: boolean;
+  isShowingViewModal: boolean;
   toggle(): void;
+  toggleView(): void;
   occurrenceId: number;
 }
 
@@ -10,6 +12,7 @@ const ModalContext = createContext<ModalContextData>({} as ModalContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
+  const [isShowingViewModal, setIsShowingViewModal] = useState(false);
   const [idOccurrence, setIdOccurrence] = useState(0);
 
   const toggle = useCallback(() => {
@@ -17,9 +20,20 @@ const ModalProvider: React.FC = ({ children }) => {
     setIdOccurrence(idOccurrence);
   }, [isShowing, idOccurrence]);
 
+  const toggleView = useCallback(() => {
+    setIsShowingViewModal(!isShowingViewModal);
+    setIdOccurrence(idOccurrence);
+  }, [isShowingViewModal, idOccurrence]);
+
   return (
     <ModalContext.Provider
-      value={{ isShowing, toggle, occurrenceId: idOccurrence }}
+      value={{
+        isShowing,
+        isShowingViewModal,
+        toggle,
+        toggleView,
+        occurrenceId: idOccurrence,
+      }}
     >
       {children}
     </ModalContext.Provider>
