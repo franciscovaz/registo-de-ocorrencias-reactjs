@@ -26,7 +26,7 @@ export const ContainerDropZone = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: ${props => props.theme.colors.fieldsetSpanColor};
+    color: ${props => props.theme.colors.whiteGrey};
 
     svg {
       color: var(--primary-color);

@@ -25,7 +25,7 @@ export const FormContainer = styled.div`
 
     h1 {
       font-size: 36px;
-      color: ${props => props.theme.colors.fieldsetSpanColor};
+      color: ${props => props.theme.colors.whiteGrey};
     }
 
     fieldset {
@@ -43,13 +43,13 @@ export const FormContainer = styled.div`
 
       h2 {
         font-size: 24px;
-        color: ${props => props.theme.colors.fieldsetSpanColor};
+        color: ${props => props.theme.colors.whiteGrey};
       }
 
       span {
         font-size: 14px;
         font-weight: normal;
-        color: ${props => props.theme.colors.fieldsetSpanColor};
+        color: ${props => props.theme.colors.whiteGrey};
       }
     }
 
@@ -111,6 +111,6 @@ export const Field = styled.div`
   label {
     font-size: 14px;
     margin-bottom: 8px;
-    color: ${props => props.theme.colors.fieldsetSpanColor};
+    color: ${props => props.theme.colors.whiteGrey};
   }
 `;

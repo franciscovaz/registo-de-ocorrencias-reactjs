@@ -12,7 +12,7 @@ declare module 'styled-components' {
 
       registerCardBackground: string;
 
-      fieldsetSpanColor: string;
+      whiteGrey: string;
 
       background: string;
       text: string;

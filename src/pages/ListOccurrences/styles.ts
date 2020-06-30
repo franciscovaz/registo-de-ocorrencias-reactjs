@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   text-align: center;
   font-size: 38px;
-  color: ${props => props.theme.colors.fieldsetSpanColor};
+  color: ${props => props.theme.colors.whiteGrey};
 `;
 
 export const TableContainer = styled.section`
@@ -21,7 +21,7 @@ export const TableContainer = styled.section`
     border-spacing: 0 8px;
 
     th {
-      color: ${props => props.theme.colors.fieldsetSpanColor};
+      color: ${props => props.theme.colors.whiteGrey};
       font-weight: normal;
       padding: 20px 32px;
       text-align: left;
@@ -35,7 +35,7 @@ export const TableContainer = styled.section`
       background: ${props => props.theme.colors.registerCardBackground};
       font-size: 16px;
       font-weight: normal;
-      color: ${props => props.theme.colors.fieldsetSpanColor};
+      color: ${props => props.theme.colors.whiteGrey};
 
       button {
         background: transparent;

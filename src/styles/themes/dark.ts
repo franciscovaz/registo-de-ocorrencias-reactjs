@@ -8,7 +8,7 @@ export default {
     registerCardBackground: '#212121',
     headerBackground: '#121212',
 
-    fieldsetSpanColor: '#f5f5f5',
+    whiteGrey: '#f5f5f5',
 
     background: '#121212',
     text: '#333',
