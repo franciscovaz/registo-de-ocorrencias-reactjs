@@ -56,3 +56,9 @@ export const TableContainer = styled.section`
     }
   }
 `;
+
+export const OperationsCollumn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

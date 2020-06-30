@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Title, TableContainer } from './styles';
+import { Container, Title, TableContainer, OperationsCollumn } from './styles';
 import { FiEdit2, FiEye } from 'react-icons/fi';
 import Header from '../../components/Header';
 import api from '../../services/api';
@@ -95,29 +95,31 @@ const ListOccurrences: React.FC = () => {
                   </td>
 
                   <td>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        handleViewOccurrenceModal(
-                          Number(occurrence.id_ocorrencia),
-                        );
-                      }}
-                    >
-                      <FiEye color={'#606062'} />
-                    </button>
-                    {isAdmin && (
+                    <OperationsCollumn>
                       <button
                         type="button"
                         onClick={() => {
-                          toggle();
-                          handleChangeOccurence(
+                          handleViewOccurrenceModal(
                             Number(occurrence.id_ocorrencia),
                           );
                         }}
                       >
-                        <FiEdit2 color={'#606062'} />
+                        <FiEye color={'#606062'} />
                       </button>
-                    )}
+                      {isAdmin && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            toggle();
+                            handleChangeOccurence(
+                              Number(occurrence.id_ocorrencia),
+                            );
+                          }}
+                        >
+                          <FiEdit2 color={'#606062'} />
+                        </button>
+                      )}
+                    </OperationsCollumn>
                   </td>
                 </tr>
               ))}
