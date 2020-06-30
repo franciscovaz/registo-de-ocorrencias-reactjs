@@ -35,7 +35,16 @@ export const TableContainer = styled.section`
       background: ${props => props.theme.colors.registerCardBackground};
       font-size: 16px;
       font-weight: normal;
-      color: ${props => props.theme.colors.text};
+      color: ${props => props.theme.colors.fieldsetSpanColor};
+
+      button {
+        background: transparent;
+        border: 0;
+
+        & + button {
+          margin-left: 10px;
+        }
+      }
     }
 
     td:first-child {
@@ -44,15 +53,6 @@ export const TableContainer = styled.section`
 
     td:last-child {
       border-radius: 0 8px 8px 0;
-    }
-
-    button {
-      background: transparent;
-      border: 0;
-
-      & + button {
-        margin-left: 10px;
-      }
     }
   }
 `;

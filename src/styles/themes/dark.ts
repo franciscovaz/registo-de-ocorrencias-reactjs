@@ -5,12 +5,12 @@ export default {
     primary: '#ff9000',
     secundary: '#c0c1c4',
 
-    registerCardBackground: '#c0c1c4',
-    headerBackground: '#000000',
+    registerCardBackground: '#212121',
+    headerBackground: '#121212',
 
     fieldsetSpanColor: '#f5f5f5',
 
-    background: '#393e46',
+    background: '#121212',
     text: '#333',
   },
 };

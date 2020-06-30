@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerDropZone = styled.div`
   height: 300px;
-  background: #f2e8d5;
+  background: #ada8a03d;
   border-radius: 10px;
 
   display: flex;
@@ -26,7 +26,7 @@ export const ContainerDropZone = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: ${props => props.theme.colors.fieldsetSpanColor};
 
     svg {
       color: var(--primary-color);

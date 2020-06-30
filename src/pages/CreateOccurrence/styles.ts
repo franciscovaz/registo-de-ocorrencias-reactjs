@@ -25,6 +25,7 @@ export const FormContainer = styled.div`
 
     h1 {
       font-size: 36px;
+      color: ${props => props.theme.colors.fieldsetSpanColor};
     }
 
     fieldset {
@@ -42,6 +43,7 @@ export const FormContainer = styled.div`
 
       h2 {
         font-size: 24px;
+        color: ${props => props.theme.colors.fieldsetSpanColor};
       }
 
       span {
@@ -54,7 +56,7 @@ export const FormContainer = styled.div`
     button {
       width: 260px;
       height: 56px;
-      background: var(--title-color);
+      background: #0b0b0b;
       border-radius: 8px;
       color: #fff;
       font-weight: bold;
@@ -105,10 +107,10 @@ export const Field = styled.div`
     &::placeholder {
       color: #a0a0b2;
     }
-
-    label {
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
+  }
+  label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: ${props => props.theme.colors.fieldsetSpanColor};
   }
 `;
