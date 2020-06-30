@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
 
   align-items: scretch;
-  background: #312e38;
+  background: ${props => props.theme.colors.background};
 `;
 
 export const Content = styled.div`
@@ -47,11 +47,11 @@ export const AnimationContainer = styled.div`
 
     h1 {
       margin-bottom: 24px;
-      color: #f5f5f5;
+      color: ${props => props.theme.colors.whiteGrey};
     }
 
     a {
-      color: #f4ede8;
+      color: ${props => props.theme.colors.whiteGrey};
       display: block;
       margin-top: 16px;
       text-decoration: none;

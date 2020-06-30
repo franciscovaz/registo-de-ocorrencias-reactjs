@@ -83,7 +83,7 @@ export const Field = styled.div`
 
   input {
     flex: 1;
-    background: #f0f0f5;
+    background: ${props => props.theme.colors.secundary};
     border-radius: 8px;
     border: 0;
     padding: 16px 24px;
@@ -97,7 +97,7 @@ export const Field = styled.div`
 
   textarea {
     flex: 1;
-    background: var(--textarea-background);
+    background: ${props => props.theme.colors.secundary};
     border-radius: 8px;
     border: 0;
     padding: 16px 24px;
