@@ -9,9 +9,8 @@ import {
   Actions,
   ModalOverlay,
 } from './styles';
-import './styles';
-import api from '../../services/api';
-import { useToast } from '../../hooks/toast';
+import api from '../../../services/api';
+import { useToast } from '../../../hooks/toast';
 
 interface ModalProps {
   isShowing: boolean;
