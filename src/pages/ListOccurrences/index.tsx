@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { Container, Title, TableContainer, OperationsCollumn } from './styles';
 import { FiEdit2, FiEye } from 'react-icons/fi';
@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { useModal } from '../../hooks/modal';
 import Modal from '../../components/Modal';
+import { ThemeContext } from 'styled-components';
 
 interface OccurrenceProps {
   id_ocorrencia: string;
@@ -35,6 +36,8 @@ const ListOccurrences: React.FC = () => {
 
   const { auth } = useAuth();
   const { isShowing, toggle } = useModal();
+
+  const { colors } = useContext(ThemeContext);
 
   useEffect(() => {
     const user = auth as UserId;
@@ -104,7 +107,7 @@ const ListOccurrences: React.FC = () => {
                           );
                         }}
                       >
-                        <FiEye color={'#606062'} />
+                        <FiEye color={colors.whiteGrey} />
                       </button>
                       {isAdmin && (
                         <button
@@ -116,7 +119,7 @@ const ListOccurrences: React.FC = () => {
                             );
                           }}
                         >
-                          <FiEdit2 color={'#606062'} />
+                          <FiEdit2 color={colors.whiteGrey} />
                         </button>
                       )}
                     </OperationsCollumn>
