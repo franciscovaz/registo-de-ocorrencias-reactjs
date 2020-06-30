@@ -19,7 +19,7 @@ export const ModalContainer = styled.div`
 
   z-index: 1010;
 
-  background: #fff;
+  background: ${props => props.theme.colors.registerCardBackground};
   box-shadow: -2rem 2rem 2rem rgba(black, 0.9);
 `;
 
@@ -32,6 +32,7 @@ export const ModalHeader = styled.div`
   h2 {
     padding: 1rem;
     margin: 0;
+    color: ${props => props.theme.colors.whiteGrey};
   }
 
   button {
@@ -49,14 +50,17 @@ export const ModalContent = styled.div`
   h3 {
     text-align: center;
     margin-bottom: 20px;
+    color: ${props => props.theme.colors.whiteGrey};
   }
 
   h4 {
     font-size: 18px;
+    color: ${props => props.theme.colors.whiteGrey};
   }
 
   p {
     margin-top: 8px;
+    color: ${props => props.theme.colors.whiteGrey};
   }
 
   select {
@@ -70,7 +74,7 @@ export const Textarea = styled.textarea<textareaProps>`
   border: 0;
   border-radius: 8px;
   padding: 14px 20px;
-  background: var(--textarea-background);
+  background: ${props => props.theme.colors.secundary};
   margin-top: 8px;
 
   ${props =>

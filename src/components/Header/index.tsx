@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ page = 'list' }: HeaderProps) => {
             className={page === 'list' ? 'underline' : ''}
             to="/list-occurrences"
           >
-            Listar Ocorrêncis
+            Listar Ocorrências
           </Link>
         </MenuItems>
 
