@@ -39,6 +39,33 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
+
+  img {
+    width: 550px;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 16px;
+`;
+
+export const OccurrenceDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 16px;
+
+  h3 {
+    margin-bottom: 8px;
+    text-align: center;
+  }
 `;
 
 export const ModalOverlay = styled.div`

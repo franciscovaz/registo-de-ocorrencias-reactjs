@@ -18,7 +18,7 @@ interface ModalProps {
   occurrenceId: number;
 }
 
-interface OccurrenceData {
+export interface OccurrenceData {
   id_ocorrencia: number;
   titulo_ocorrencia: string;
   descricao_ocorrencia: string;
