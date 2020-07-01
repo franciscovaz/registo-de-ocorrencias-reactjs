@@ -54,6 +54,7 @@ export const UserInfo = styled.div`
   justify-content: space-between;
 
   margin-top: 16px;
+  color: ${props => props.theme.colors.whiteGrey};
 `;
 
 export const OccurrenceDetails = styled.div`
@@ -61,6 +62,7 @@ export const OccurrenceDetails = styled.div`
   flex-direction: column;
 
   margin-top: 16px;
+  color: ${props => props.theme.colors.whiteGrey};
 
   h3 {
     margin-bottom: 8px;
