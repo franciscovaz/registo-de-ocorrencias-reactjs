@@ -45,6 +45,12 @@ This project is still in development!
 <h1 align="center">
   <img height="500" alt="Listagem de Ocorrências" src="https://user-images.githubusercontent.com/27808014/85603740-8f854d80-b648-11ea-95f2-2d555c45ff56.png">
 </h1>
+<h1 align="center">
+  <img height="500" alt="Dark list" src="https://user-images.githubusercontent.com/27808014/86472337-f08ede80-bd36-11ea-841a-a65cee5d668f.png">
+</h1>
+<h1 align="center">
+  <img height="500" alt="Dark modal" src="https://user-images.githubusercontent.com/27808014/86472123-8ece7480-bd36-11ea-91a9-8818096e839b.png">
+</h1>
 
 ---
 
