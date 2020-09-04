@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-   🏗 Registo de Ocorrências | ReactJS + Node
+   🏗 Registo de Ocorrências | ReactJS + NodeJS
 </h3>
 
 <p align="center">
@@ -25,9 +25,6 @@ I already made an application with the same purpose in Angular, however and want
 
 This project is still in development!
 
-<br />
-
-<!--![GoBarber GIF](imgs/gobarber.gif) -->
 
 <br />
 
