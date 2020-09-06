@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-   🏗 Registo de Ocorrências | ReactJS + NodeJS
+   🏗 Registo de Ocorrências | ReactJS + NodeJS (other project for backend)
 </h3>
 
 <p align="center">
