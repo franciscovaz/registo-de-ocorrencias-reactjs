@@ -9,13 +9,13 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: ${props => props.theme.colors.registerCardBackground};
+  background: '#212121';
   padding: 16px;
   width: 100%;
   border-radius: 10px;
   font-weight: 500;
 
-  border: 2px solid ${props => props.theme.colors.registerCardBackground};
+  border: 2px solid '#212121';
   color: #666360;
 
   ${props =>
@@ -48,10 +48,10 @@ export const Container = styled.div<ContainerProps>`
     flex: 1;
     background: transparent;
     border: 0;
-    color: ${props => props.theme.colors.whiteGrey};
+    color: '#f5f5f5';
 
     &::placeholder {
-      color: ${props => props.theme.colors.whiteGrey};
+      color: '#f5f5f5';
     }
   }
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Switch from 'react-switch';
 import { ThemeContext } from 'styled-components';
 
-import { shade } from 'polished';
+/* import { shade } from 'polished'; */
 
 import { Container } from './styles';
 
@@ -23,7 +23,7 @@ const SwitchComponent: React.FC<SwitchProps> = ({ toggleTheme }) => {
         height={10}
         width={40}
         handleDiameter={20}
-        offColor={shade(0.15, colors.headerBackground)}
+        offColor={colors.headerBackground}
         onColor={colors.secundary}
       />
     </Container>

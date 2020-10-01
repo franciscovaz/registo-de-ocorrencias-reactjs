@@ -85,12 +85,7 @@ const Login: React.FC = () => {
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça o seu login</h1>
 
-            <Input
-              name="email"
-              icon={FiMail}
-              type="email"
-              placeholder="Email"
-            />
+            <Input name="email" icon={FiMail} placeholder="Email" />
             <Input
               name="password"
               icon={FiLock}
@@ -100,7 +95,7 @@ const Login: React.FC = () => {
 
             <Button type="submit">Entrar</Button>
 
-            <a href="/forgot">Recuperar palavra-passe</a>
+            <Link to="forgot">Recuperar palavra-passe</Link>
           </Form>
 
           <Link to="/signup">
