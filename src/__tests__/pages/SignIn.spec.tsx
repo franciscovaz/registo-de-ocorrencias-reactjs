@@ -4,6 +4,8 @@ import { fireEvent, render, wait } from '@testing-library/react';
 import Login from '../../pages/Login';
 
 const mockedHistoryPush = jest.fn();
+const mockedSignIn = jest.fn();
+const mockedAddToast = jest.fn();
 
 jest.mock('react-router-dom', () => {
   return {
@@ -11,6 +13,22 @@ jest.mock('react-router-dom', () => {
       push: mockedHistoryPush,
     }), // quando aparecer o useHistory eu chamo uma funcao push, como no component
     Link: ({ children }: { children: React.ReactNode }) => children, // Tambem uso os Link que mostram o conteudo dos children (Ver Link em SignIn)
+  };
+});
+
+jest.mock('../../hooks/auth', () => {
+  return {
+    useAuth: () => ({
+      signIn: mockedSignIn,
+    }),
+  };
+});
+
+jest.mock('../../hooks/toast', () => {
+  return {
+    useToast: () => ({
+      addToast: mockedAddToast,
+    }),
   };
 });
 
