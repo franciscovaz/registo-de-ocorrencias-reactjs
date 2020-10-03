@@ -4,8 +4,8 @@ import { fireEvent, render, wait } from '@testing-library/react';
 import Login from '../../pages/Login';
 
 const mockedHistoryPush = jest.fn();
-const mockedSignIn = jest.fn();
 const mockedAddToast = jest.fn();
+const mockedSignIn = jest.fn();
 
 jest.mock('react-router-dom', () => {
   return {
@@ -47,6 +47,32 @@ describe('SignIn page', () => {
 
     await wait(() => {
       expect(mockedHistoryPush).toHaveBeenCalledWith('/create-occurrence');
+    });
+  });
+  it('should display an error if login fails', async () => {
+    mockedSignIn.mockImplementation(() => {
+      throw new Error();
+    });
+
+    const { getByPlaceholderText, getByText } = render(<Login />);
+
+    const emailField = getByPlaceholderText('Email');
+    const passwordField = getByPlaceholderText('Password');
+
+    const buttonElement = getByText('Entrar');
+
+    fireEvent.change(emailField, { target: { value: 'johndoe@example.com' } });
+
+    fireEvent.change(passwordField, { target: { value: '123456' } });
+
+    fireEvent.click(buttonElement);
+
+    await wait(() => {
+      expect(mockedAddToast).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'error',
+        }),
+      );
     });
   });
 });
