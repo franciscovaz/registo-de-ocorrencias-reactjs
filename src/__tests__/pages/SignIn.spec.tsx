@@ -33,6 +33,10 @@ jest.mock('../../hooks/toast', () => {
 });
 
 describe('SignIn page', () => {
+  beforeEach(() => {
+    mockedHistoryPush.mockClear();
+  });
+
   it('should be able to sign in', async () => {
     const { getByPlaceholderText, getByText } = render(<Login />);
 
@@ -49,6 +53,24 @@ describe('SignIn page', () => {
       expect(mockedHistoryPush).toHaveBeenCalledWith('/create-occurrence');
     });
   });
+
+  it('shouldnt be able to sign in with invalid credentials', async () => {
+    const { getByPlaceholderText, getByText } = render(<Login />);
+
+    const emailField = getByPlaceholderText('Email');
+    const passwordField = getByPlaceholderText('Password');
+    const buttonElement = getByText('Entrar');
+
+    fireEvent.change(emailField, { target: { value: 'not-valid-email' } });
+    fireEvent.change(passwordField, { target: { value: '123456' } });
+
+    fireEvent.click(buttonElement);
+
+    await wait(() => {
+      expect(mockedHistoryPush).not.toHaveBeenCalled();
+    });
+  });
+
   it('should display an error if login fails', async () => {
     mockedSignIn.mockImplementation(() => {
       throw new Error();

@@ -31,11 +31,13 @@ const Login: React.FC = () => {
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
-      formRef.current?.setErrors({});
-
       try {
+        formRef.current?.setErrors({});
+
         const schema = Yup.object().shape({
-          email: Yup.string().required('Email obrigatório'),
+          email: Yup.string()
+            .required('Email obrigatório')
+            .email('Digite um email válido'),
           password: Yup.string().required('Password obrigatória'),
         });
 
@@ -85,7 +87,12 @@ const Login: React.FC = () => {
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça o seu login</h1>
 
-            <Input name="email" icon={FiMail} placeholder="Email" />
+            <Input
+              name="email"
+              icon={FiMail}
+              type="email"
+              placeholder="Email"
+            />
             <Input
               name="password"
               icon={FiLock}
@@ -95,7 +102,7 @@ const Login: React.FC = () => {
 
             <Button type="submit">Entrar</Button>
 
-            <Link to="forgot">Recuperar palavra-passe</Link>
+            <Link to="/forgot">Recuperar palavra-passe</Link>
           </Form>
 
           <Link to="/signup">
