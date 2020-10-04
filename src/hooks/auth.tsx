@@ -24,8 +24,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
   const [authData, setAuthData] = useState<AuthState>(() => {
-    const userToken = localStorage.getItem('@GoBarber:token');
-    const userInfo = localStorage.getItem('@GoBarber:user');
+    const userToken = localStorage.getItem('@RegistoOcorrencias:token');
+    const userInfo = localStorage.getItem('@RegistoOcorrencias:user');
 
     if (userToken && userInfo) {
       api.defaults.headers.authorization = `Bearer ${userToken}`;
@@ -72,8 +72,8 @@ const AuthProvider: React.FC = ({ children }) => {
     //console.log('token: ', token);
 
     if (token && user) {
-      localStorage.setItem('@GoBarber:token', token);
-      localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+      localStorage.setItem('@RegistoOcorrencias:token', token);
+      localStorage.setItem('@RegistoOcorrencias:user', JSON.stringify(user));
 
       api.defaults.headers.authorization = `Bearer ${token}`;
 
@@ -82,8 +82,8 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@GoBarber:token');
-    localStorage.removeItem('@GoBarber:user');
+    localStorage.removeItem('@RegistoOcorrencias:token');
+    localStorage.removeItem('@RegistoOcorrencias:user');
 
     setAuthData({} as AuthState);
   }, []);
