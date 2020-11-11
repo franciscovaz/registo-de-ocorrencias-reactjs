@@ -42,8 +42,6 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     } else {
       setIsFilled(false);
     }
-
-    // setIsFilled(!!inputRef.current?.value)
   }, []);
 
   return (
